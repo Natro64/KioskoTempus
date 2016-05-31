@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="RB_Tabla" alias="RB_Tabla" created="2016-05-17T07:08:15" modified="2016-05-17T07:08:15" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column fieldName="TblCodigo" name="TBL_Codigo" label="TBL Codigo" />
+    <column fieldName="TblNombre" name="TBL_Nombre" label="TBL Nombre" />
+    <column fieldName="TblAlias" name="TBL_Alias" label="TBL Alias" />
+    <column fieldName="TblDescripcion" name="TBL_Descripcion" label="TBL Descripcion" />
+    <column fieldName="TblNumregxavance" name="TBL_NumRegxAvance" label="TBL Num Regx Avance" />
+    <column fieldName="TblImportable" name="TBL_Importable" label="TBL Importable" />
+    <column fieldName="TblLlave" name="TBL_Llave" label="TBL Llave" />
+    <column fieldName="TblCampodescripcion" name="TBL_CampoDescripcion" label="TBL Campo Descripcion" />
+    <column fieldName="TblBitacora" name="TBL_Bitacora" label="TBL Bitacora" />
+  </columns>
+</dataModel>

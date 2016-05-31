@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="TipoPrestamo" alias="TipoPrestamo" created="2016-05-17T07:07:00" modified="2016-05-17T07:07:02" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="Id_TipoPrestamo" parentTableSchema="dbo" parentTableName="TipoPrestamo" x="351" y="20">
+      <foreignKeyColumn columnName="Id_TipoPrestamo" parentColumnName="Id_TipoPrestamo" />
+    </foreignKey>
+    <foreignKey id="Id_TipoPrestamoId_Concepto" parentTableSchema="dbo" parentTableName="Concepto" baseForeignKey="Id_TipoPrestamo" x="670" y="20">
+      <foreignKeyColumn columnName="Id_Concepto" parentColumnName="Id_Concepto" />
+    </foreignKey>
+    <foreignKey id="Id_TipoPrestamoId_ConceptoID_TipoConcepto" parentTableSchema="dbo" parentTableName="TipoConcepto" baseForeignKey="Id_TipoPrestamoId_Concepto" x="970" y="20">
+      <foreignKeyColumn columnName="ID_TipoConcepto" parentColumnName="ID_TipoConcepto" />
+    </foreignKey>
+    <foreignKey id="Id_TipoPrestamoId_Concepto2" parentTableSchema="dbo" parentTableName="Concepto" baseForeignKey="Id_TipoPrestamo" x="670" y="204">
+      <foreignKeyColumn columnName="Id_Concepto2" parentColumnName="Id_Concepto" />
+    </foreignKey>
+    <foreignKey id="Id_TipoPrestamoId_Concepto2ID_TipoConcepto" parentTableSchema="dbo" parentTableName="TipoConcepto" baseForeignKey="Id_TipoPrestamoId_Concepto2" x="1270" y="20">
+      <foreignKeyColumn columnName="ID_TipoConcepto" parentColumnName="ID_TipoConcepto" />
+    </foreignKey>
+    <foreignKey id="TheId_Concepto" parentTableSchema="dbo" parentTableName="Concepto" x="351" y="227">
+      <foreignKeyColumn columnName="Id_Concepto" parentColumnName="Id_Concepto" />
+    </foreignKey>
+    <foreignKey id="TheId_ConceptoID_TipoConcepto" parentTableSchema="dbo" parentTableName="TipoConcepto" baseForeignKey="TheId_Concepto" x="1570" y="20">
+      <foreignKeyColumn columnName="ID_TipoConcepto" parentColumnName="ID_TipoConcepto" />
+    </foreignKey>
+    <foreignKey id="Id_Concepto2" parentTableSchema="dbo" parentTableName="Concepto" x="351" y="411">
+      <foreignKeyColumn columnName="Id_Concepto2" parentColumnName="Id_Concepto" />
+    </foreignKey>
+    <foreignKey id="Id_Concepto2ID_TipoConcepto" parentTableSchema="dbo" parentTableName="TipoConcepto" baseForeignKey="Id_Concepto2" x="1871" y="20">
+      <foreignKeyColumn columnName="ID_TipoConcepto" parentColumnName="ID_TipoConcepto" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column fieldName="IDTipoprestamo" name="Id_TipoPrestamo" label="Id Tipo Prestamo" aliasColumnName="Descripcion" aliasForeignKey="Id_TipoPrestamo" />
+    <column fieldName="IDTipoprestamodescripcion" name="Descripcion" label="Id Tipo Prestamo Descripcion" foreignKey="Id_TipoPrestamo" />
+    <column fieldName="IDTipoprestamoidConceptoalias" name="Alias" label="Id Tipo Prestamo Id Concepto Alias" foreignKey="Id_TipoPrestamoId_Concepto" />
+    <column fieldName="IDTipoprestamoidConceptoidTipoconceptodescripcion" name="Descripcion" label="Id Tipo Prestamo Id Concepto ID Tipo Concepto Descripcion" foreignKey="Id_TipoPrestamoId_ConceptoID_TipoConcepto" />
+    <column fieldName="IDTipoprestamoidConcepto2alias" name="Alias" label="Id Tipo Prestamo Id Concepto2 Alias" foreignKey="Id_TipoPrestamoId_Concepto2" />
+    <column fieldName="IDTipoprestamoidConcepto2idTipoconceptodescripcion" name="Descripcion" label="Id Tipo Prestamo Id Concepto2 ID Tipo Concepto Descripcion" foreignKey="Id_TipoPrestamoId_Concepto2ID_TipoConcepto" />
+    <column fieldName="Descripcion" name="Descripcion" label="Descripcion" />
+    <column fieldName="DescripcionBilingue" name="DescripcionBilingue" label="Descripcion Bilingue" />
+    <column fieldName="IDConcepto" name="Id_Concepto" label="Id Concepto" aliasColumnName="Alias" aliasForeignKey="TheId_Concepto" />
+    <column fieldName="TheidConceptoalias" name="Alias" label="Id Concepto Alias" foreignKey="TheId_Concepto" />
+    <column fieldName="TheidConceptoidTipoconceptodescripcion" name="Descripcion" label="Id Concepto ID Tipo Concepto Descripcion" foreignKey="TheId_ConceptoID_TipoConcepto" />
+    <column fieldName="IDConcepto2" name="Id_Concepto2" label="Id Concepto2" aliasColumnName="Alias" aliasForeignKey="Id_Concepto2" />
+    <column fieldName="IDConcepto2alias" name="Alias" label="Id Concepto2 Alias" foreignKey="Id_Concepto2" />
+    <column fieldName="IDConcepto2idTipoconceptodescripcion" name="Descripcion" label="Id Concepto2 ID Tipo Concepto Descripcion" foreignKey="Id_Concepto2ID_TipoConcepto" />
+    <column fieldName="SaldarEnFiniquito" name="SaldarEnFiniquito" label="Saldar En Finiquito" />
+    <column fieldName="AltaAutomatica" name="AltaAutomatica" label="Alta Automatica" />
+    <column fieldName="Numero" name="Numero" label="Numero" />
+    <column fieldName="Texto" name="Texto" label="Texto" />
+    <column fieldName="CreadoPor" name="CreadoPor" label="Creado Por" />
+    <column fieldName="ModificadoPor" name="ModificadoPor" label="Modificado Por" />
+    <column fieldName="CreadoEn" name="CreadoEn" label="Creado En" format="g" />
+    <column fieldName="ModificadoEn" name="ModificadoEn" label="Modificado En" format="g" />
+  </columns>
+</dataModel>

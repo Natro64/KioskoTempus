@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Empleado" conflictDetection="overwriteChanges" label="Empleado" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Empleado"."ID_Empleado" "IDEmpleado"
+	,"Empleado"."NombreCompleto" "NombreCompleto"
+	,"Empleado"."ID_Organizacion" "IDOrganizacion"
+	,"Empleado"."Estatus" "Estatus"
+	,"Empleado"."ApellidoPaterno" "ApellidoPaterno"
+	,"Empleado"."ApellidoMaterno" "ApellidoMaterno"
+	,"Empleado"."Nombre" "Nombre"
+	,"Empleado"."RFC" "Rfc"
+	,"Empleado"."NoIMSS" "NoImss"
+	,"Empleado"."ClinicaIMSS" "ClinicaImss"
+	,"Empleado"."CURP" "Curp"
+	,"Empleado"."Sexo" "Sexo"
+	,"Empleado"."ID_EstadoCivil" "IDEstadocivil"
+	,"Empleado"."CuentaBanco" "CuentaBanco"
+	,"Empleado"."CuentaVales" "CuentaVales"
+	,"Empleado"."CuentaGasolina" "CuentaGasolina"
+	,"Empleado"."eMail" "EMail"
+	,"Empleado"."Titulo" "Titulo"
+	,"Empleado"."CP" "Cp"
+	,"Empleado"."Calle" "Calle"
+	,"Empleado"."NoExterior" "NoExterior"
+	,"Empleado"."NoInterior" "NoInterior"
+	,"Empleado"."Colonia" "Colonia"
+	,"Empleado"."ID_Municipio" "IDMunicipio"
+	,"Empleado"."ID_Estado" "IDEstado"
+	,"Empleado"."Pais" "Pais"
+	,"Empleado"."Telefono" "Telefono"
+	,"Empleado"."ChecaTarjeta" "ChecaTarjeta"
+	,"Empleado"."LetraGafete" "LetraGafete"
+	,"Empleado"."Gafete" "Gafete"
+	,"Empleado"."ID_Escolaridad" "IDEscolaridad"
+	,"Empleado"."ID_TipoNomina" "IDTiponomina"
+	,"Empleado"."ID_TipoPago" "IDTipopago"
+	,"Empleado"."FechaResidencia" "FechaResidencia"
+	,"Empleado"."FechaNacimiento" "FechaNacimiento"
+	,"Empleado"."FechaRevisionSalario" "FechaRevisionSalario"
+	,"Empleado"."Multilingue" "Multilingue"
+	,"Empleado"."Pasaporte" "Pasaporte"
+	,"Empleado"."Idiomas" "Idiomas"
+	,"Empleado"."LugarMatrimonio" "LugarMatrimonio"
+	,"Empleado"."LugarNacimiento" "LugarNacimiento"
+	,"Empleado"."ID_Transporte" "IDTransporte"
+	,"Empleado"."Nacionalidad" "Nacionalidad"
+	,"Empleado"."ID_TipoVivienda" "IDTipovivienda"
+	,"Empleado"."ID_EstadoNacimiento" "IDEstadonacimiento"
+	,"Empleado"."ID_MunicipioNacimiento" "IDMunicipionacimiento"
+	,"Empleado"."CursosAnteriores" "CursosAnteriores"
+	,"Empleado"."PuestosAnteriores" "PuestosAnteriores"
+	,"Empleado"."EstudiaActualmente" "EstudiaActualmente"
+	,"Empleado"."HorarioEstudiante" "HorarioEstudiante"
+	,"Empleado"."ZonaEconomica" "ZonaEconomica"
+	,"Empleado"."Foto" "Foto"
+	,"Empleado"."Firma" "Firma"
+	,"Empleado"."ID_Plantilla" "IDPlantilla"
+	,"Empleado"."ID_JefeDirecto" "IDJefedirecto"
+	,"Empleado"."FechaIngreso" "FechaIngreso"
+	,"Empleado"."FechaBaja" "FechaBaja"
+	,"Empleado"."FechaPrestaciones" "FechaPrestaciones"
+	,"Empleado"."FechaSigEvaluacion" "FechaSigEvaluacion"
+	,"Empleado"."FechaInicioContrato" "FechaInicioContrato"
+	,"Empleado"."FechaVencContra" "FechaVencContra"
+	,"Empleado"."ID_Patron" "IDPatron"
+	,"Empleado"."ID_Tabulador" "IDTabulador"
+	,"Empleado"."ID_Prestaciones" "IDPrestaciones"
+	,"Empleado"."SalarioTabulador" "SalarioTabulador"
+	,"Empleado"."SalarioIntegradoAnterior" "SalarioIntegradoAnterior"
+	,"Empleado"."SalarioDiarioAnterior" "SalarioDiarioAnterior"
+	,"Empleado"."SalarioDiario" "SalarioDiario"
+	,"Empleado"."FactorIntegracion" "FactorIntegracion"
+	,"Empleado"."SalarioVariables" "SalarioVariables"
+	,"Empleado"."ID_Puesto" "IDPuesto"
+	,"Empleado"."ID_Turno" "IDTurno"
+	,"Empleado"."ID_Departamento" "IDDepartamento"
+	,"Empleado"."ID_CentroCosto" "IDCentrocosto"
+	,"Empleado"."ID_Clasificacion" "IDClasificacion"
+	,"Empleado"."ID_Supervisor" "IDSupervisor"
+	,"Empleado"."ID_Contrato" "IDContrato"
+	,"Empleado"."ID_Grupo01" "IDGrupo01"
+	,"Empleado"."ID_Grupo02" "IDGrupo02"
+	,"Empleado"."ID_Grupo03" "IDGrupo03"
+	,"Empleado"."ID_Grupo04" "IDGrupo04"
+	,"Empleado"."ID_Grupo05" "IDGrupo05"
+	,"Empleado"."ID_TablaAd01" "IDTablaad01"
+	,"Empleado"."ID_TablaAd02" "IDTablaad02"
+	,"Empleado"."ID_TablaAd03" "IDTablaad03"
+	,"Empleado"."ID_TablaAd04" "IDTablaad04"
+	,"Empleado"."ID_TablaAd05" "IDTablaad05"
+	,"Empleado"."ID_TablaAd06" "IDTablaad06"
+	,"Empleado"."ID_TablaAd07" "IDTablaad07"
+	,"Empleado"."ID_TablaAd08" "IDTablaad08"
+	,"Empleado"."ID_TablaAd09" "IDTablaad09"
+	,"Empleado"."ID_TablaAd10" "IDTablaad10"
+	,"Empleado"."ID_TablaAd11" "IDTablaad11"
+	,"Empleado"."ID_TablaAd12" "IDTablaad12"
+	,"Empleado"."ID_TablaAd13" "IDTablaad13"
+	,"Empleado"."ID_TablaAd14" "IDTablaad14"
+	,"Empleado"."ID_TablaAd15" "IDTablaad15"
+	,"Empleado"."Logico01" "Logico01"
+	,"Empleado"."Logico02" "Logico02"
+	,"Empleado"."Logico03" "Logico03"
+	,"Empleado"."Logico04" "Logico04"
+	,"Empleado"."Logico05" "Logico05"
+	,"Empleado"."Logico06" "Logico06"
+	,"Empleado"."Logico07" "Logico07"
+	,"Empleado"."Logico08" "Logico08"
+	,"Empleado"."Logico09" "Logico09"
+	,"Empleado"."Logico10" "Logico10"
+	,"Empleado"."Logico11" "Logico11"
+	,"Empleado"."Logico12" "Logico12"
+	,"Empleado"."Logico13" "Logico13"
+	,"Empleado"."Logico14" "Logico14"
+	,"Empleado"."Logico15" "Logico15"
+	,"Empleado"."Logico16" "Logico16"
+	,"Empleado"."Logico17" "Logico17"
+	,"Empleado"."Logico18" "Logico18"
+	,"Empleado"."Logico19" "Logico19"
+	,"Empleado"."Logico20" "Logico20"
+	,"Empleado"."Logico21" "Logico21"
+	,"Empleado"."Logico22" "Logico22"
+	,"Empleado"."Logico23" "Logico23"
+	,"Empleado"."Logico24" "Logico24"
+	,"Empleado"."Logico25" "Logico25"
+	,"Empleado"."Numerico01" "Numerico01"
+	,"Empleado"."Numerico02" "Numerico02"
+	,"Empleado"."Numerico03" "Numerico03"
+	,"Empleado"."Numerico04" "Numerico04"
+	,"Empleado"."Numerico05" "Numerico05"
+	,"Empleado"."Numerico06" "Numerico06"
+	,"Empleado"."Numerico07" "Numerico07"
+	,"Empleado"."Numerico08" "Numerico08"
+	,"Empleado"."Numerico09" "Numerico09"
+	,"Empleado"."Numerico10" "Numerico10"
+	,"Empleado"."Fecha01" "Fecha01"
+	,"Empleado"."Fecha02" "Fecha02"
+	,"Empleado"."Fecha03" "Fecha03"
+	,"Empleado"."Fecha04" "Fecha04"
+	,"Empleado"."Fecha05" "Fecha05"
+	,"Empleado"."Fecha06" "Fecha06"
+	,"Empleado"."Fecha07" "Fecha07"
+	,"Empleado"."Fecha08" "Fecha08"
+	,"Empleado"."Fecha09" "Fecha09"
+	,"Empleado"."Fecha10" "Fecha10"
+	,"Empleado"."Texto01" "Texto01"
+	,"Empleado"."Texto02" "Texto02"
+	,"Empleado"."Texto03" "Texto03"
+	,"Empleado"."Texto04" "Texto04"
+	,"Empleado"."Texto05" "Texto05"
+	,"Empleado"."Texto06" "Texto06"
+	,"Empleado"."Texto07" "Texto07"
+	,"Empleado"."Texto08" "Texto08"
+	,"Empleado"."Texto09" "Texto09"
+	,"Empleado"."Texto10" "Texto10"
+	,"Empleado"."Texto11" "Texto11"
+	,"Empleado"."Texto12" "Texto12"
+	,"Empleado"."Texto13" "Texto13"
+	,"Empleado"."Texto14" "Texto14"
+	,"Empleado"."Texto15" "Texto15"
+	,"Empleado"."Texto16" "Texto16"
+	,"Empleado"."Texto17" "Texto17"
+	,"Empleado"."Texto18" "Texto18"
+	,"Empleado"."Texto19" "Texto19"
+	,"Empleado"."Texto20" "Texto20"
+	,"Empleado"."Texto21" "Texto21"
+	,"Empleado"."Texto22" "Texto22"
+	,"Empleado"."Texto23" "Texto23"
+	,"Empleado"."Texto24" "Texto24"
+	,"Empleado"."Texto25" "Texto25"
+	,"Empleado"."PasswordPortal" "PasswordPortal"
+	,"Empleado"."CreadoPor" "CreadoPor"
+	,"Empleado"."ModificadoPor" "ModificadoPor"
+	,"Empleado"."CreadoEn" "CreadoEn"
+	,"Empleado"."ModificadoEn" "ModificadoEn"
+	,"Empleado"."Id_Ruta" "IDRuta"
+	,"Empleado"."Id_Delegacion" "IDDelegacion"
+	,"Empleado"."SalarioPreIntegrado" "SalarioPreIntegrado"
+	,"Empleado"."SalarioTope" "SalarioTope"
+	,"Empleado"."EstatusDescripcion" "EstatusDescripcion"
+	,"Empleado"."Discapacidad" "Discapacidad"
+	,"Empleado"."TipoDiscapacidad" "TipoDiscapacidad"
+	,"Empleado"."Institucion" "Institucion"
+	,"Empleado"."TipoInstitucion" "TipoInstitucion"
+	,"Empleado"."CarreraTerminada" "CarreraTerminada"
+	,"Empleado"."TipoDocProb" "TipoDocProb"
+	,"Empleado"."AnioEmision" "AnioEmision"
+	,"Empleado"."SalarioPercepcionesFijas" "SalarioPercepcionesFijas"
+	,"Empleado"."SalarioIntegrado" "SalarioIntegrado"
+	,"Empleado"."CuentaContable" "CuentaContable"
+	,"Empleado"."CuentaContable2" "CuentaContable2"
+	,"Empleado"."US_Id" "UsID"
+from "dbo"."Empleado" "Empleado"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="IDEmpleado" type="Int32" allowNulls="false" isPrimaryKey="true" default="CREATE DEFAULT Cero AS 0" label="ID Empleado" showInSummary="true">
+      <items style="Lookup" dataController="Empleado" newDataView="createForm1" dataValueField="IDEmpleado" dataTextField="NombreCompleto" />
+    </field>
+    <field name="NombreCompleto" type="String" allowNulls="false" label="Nombre Completo" readOnly="true" length="92" showInSummary="true" />
+    <field name="ApellidoPaterno" type="String" allowNulls="false" default="create default [StrVacio] as ''" label="Apellido Paterno" length="30" showInSummary="true" />
+    <field name="ApellidoMaterno" type="String" allowNulls="false" default="create default [StrVacio] as ''" label="Apellido Materno" length="30" />
+    <field name="Nombre" type="String" allowNulls="false" default="create default [StrVacio] as ''" label="Nombre" length="30" />
+    <field name="Rfc" type="String" label="Rfc" length="20" />
+    <field name="FechaResidencia" type="DateTime" dataFormatString="g" label="Fecha Residencia" />
+    <field name="FechaNacimiento" type="DateTime" dataFormatString="g" label="Fecha Nacimiento" />
+    <field name="FechaRevisionSalario" type="DateTime" dataFormatString="g" label="Fecha Revision Salario" />
+    <field name="Multilingue" type="Boolean" label="Multilingue" />
+    <field name="Pasaporte" type="Boolean" label="Pasaporte" />
+    <field name="Idiomas" type="String" default="create default [StrVacio] as ''" label="Idiomas" length="50" />
+    <field name="LugarMatrimonio" type="String" default="create default [StrVacio] as ''" label="Lugar Matrimonio" length="50" />
+    <field name="LugarNacimiento" type="String" default="create default [StrVacio] as ''" label="Lugar Nacimiento" length="50" />
+    <field name="IDTransporte" type="String" label="ID Transporte" length="3" />
+    <field name="Nacionalidad" type="String" default="create default [StrVacio] as ''" label="Nacionalidad" length="20" />
+    <field name="IDTipovivienda" type="String" label="ID Tipo Vivienda" length="2" />
+    <field name="IDEstadonacimiento" type="String" label="ID Estado Nacimiento" length="3" />
+    <field name="IDMunicipionacimiento" type="String" label="ID Municipio Nacimiento" length="6" />
+    <field name="CursosAnteriores" type="String" default="create default [StrVacio] as ''" label="Cursos Anteriores" length="250" />
+    <field name="PuestosAnteriores" type="String" default="create default [StrVacio] as ''" label="Puestos Anteriores" length="250" />
+    <field name="EstudiaActualmente" type="Boolean" label="Estudia Actualmente" />
+    <field name="HorarioEstudiante" type="String" label="Horario Estudiante" length="100" />
+    <field name="ZonaEconomica" type="String" label="Zona Economica" length="1" />
+    <field name="Foto" type="Byte[]" onDemand="true" sourceFields="ID_Empleado" onDemandHandler="EmpleadoFoto" onDemandStyle="Thumbnail" allowQBE="false" allowSorting="false" label="Foto" />
+    <field name="Firma" type="Byte[]" onDemand="true" sourceFields="ID_Empleado" onDemandHandler="EmpleadoFirma" onDemandStyle="Thumbnail" allowQBE="false" allowSorting="false" label="Firma" />
+    <field name="IDPlantilla" type="String" label="ID Plantilla" length="10" />
+    <field name="IDJefedirecto" type="Int32" default="((0))" label="ID Jefe Directo" />
+    <field name="FechaIngreso" type="DateTime" dataFormatString="g" label="Fecha Ingreso" />
+    <field name="FechaBaja" type="DateTime" dataFormatString="g" label="Fecha Baja" />
+    <field name="FechaPrestaciones" type="DateTime" dataFormatString="g" label="Fecha Prestaciones" />
+    <field name="FechaSigEvaluacion" type="DateTime" dataFormatString="g" label="Fecha Sig Evaluacion" />
+    <field name="FechaInicioContrato" type="DateTime" dataFormatString="g" label="Fecha Inicio Contrato" />
+    <field name="FechaVencContra" type="DateTime" dataFormatString="g" label="Fecha Venc Contra" />
+    <field name="IDPatron" type="String" label="ID Patron" length="1" />
+    <field name="IDTabulador" type="String" label="ID Tabulador" length="10" />
+    <field name="IDPrestaciones" type="String" label="ID Prestaciones" length="1" />
+    <field name="SalarioTabulador" type="Boolean" label="Salario Tabulador" />
+    <field name="SalarioIntegradoAnterior" type="Decimal" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Salario Integrado Anterior" />
+    <field name="SalarioDiarioAnterior" type="Decimal" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Salario Diario Anterior" />
+    <field name="SalarioDiario" type="Decimal" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Salario Diario" />
+    <field name="FactorIntegracion" type="Decimal" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Factor Integracion" />
+    <field name="SalarioVariables" type="Decimal" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Salario Variables" />
+    <field name="IDPuesto" type="String" label="ID Puesto" length="10" />
+    <field name="IDTurno" type="String" label="ID Turno" length="10" />
+    <field name="IDDepartamento" type="String" label="ID Departamento" length="10" />
+    <field name="IDCentrocosto" type="String" label="ID Centro Costo" length="10" />
+    <field name="IDClasificacion" type="String" label="ID Clasificacion" length="10" />
+    <field name="IDSupervisor" type="String" label="ID Supervisor" length="10" />
+    <field name="PasswordPortal" type="String" label="Contraseña" length="30" allowNulls="false" />
+    <field name="CreadoPor" type="String" label="Creado Por" length="50" />
+    <field name="ModificadoPor" type="String" label="Modificado Por" length="50" />
+    <field name="CreadoEn" type="DateTime" dataFormatString="g" label="Creado En" />
+    <field name="ModificadoEn" type="DateTime" dataFormatString="g" label="Modificado En" />
+    <field name="IDRuta" type="String" label="Id Ruta" length="5" />
+    <field name="IDDelegacion" type="String" label="Id Delegacion" length="10" />
+    <field name="SalarioPreIntegrado" type="Decimal" label="Salario Pre Integrado" readOnly="true" />
+    <field name="SalarioTope" type="Decimal" label="Salario Tope" />
+    <field name="EstatusDescripcion" type="String" label="Estatus Descripcion" readOnly="true" length="15" />
+    <field name="Discapacidad" type="Boolean" label="Discapacidad" />
+    <field name="TipoDiscapacidad" type="Int16" label="Tipo Discapacidad" />
+    <field name="Institucion" type="String" label="Institucion" length="50" />
+    <field name="TipoInstitucion" type="Int16" label="Tipo Institucion" />
+    <field name="CarreraTerminada" type="String" label="Carrera Terminada" length="50" />
+    <field name="TipoDocProb" type="Int16" label="Tipo Doc Prob" />
+    <field name="AnioEmision" type="Int16" label="Anio Emision" />
+    <field name="SalarioPercepcionesFijas" type="Decimal" label="Salario Percepciones Fijas" />
+    <field name="SalarioIntegrado" type="Decimal" label="Salario Integrado" readOnly="true" />
+    <field name="CuentaContable" type="String" label="Cuenta Contable" length="30" />
+    <field name="CuentaContable2" type="String" label="Cuenta Contable2" length="30" />
+    <field name="UsID" type="Int32" label="US Id" />
+    <field name="NuevoPassword" type="String" allowNulls="false" label="Nueva contraseña" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false" length="50">
+      <items letters="false" />
+    </field>
+    <field name="ConfirmarContrasena" type="String" allowNulls="false" label="Confirmar nueva contraseña" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false" length="50">
+      <items letters="false" />
+    </field>
+    <field name="ConfirmarPassword" type="String" allowNulls="false" label="Contraseña anterior" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false">
+      <items letters="false" />
+    </field>
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Empleado" showInSelector="false">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="IDEmpleado" columns="15" />
+        <dataField fieldName="NombreCompleto" />
+        <dataField fieldName="ApellidoPaterno" columns="30" />
+        <dataField fieldName="ApellidoMaterno" columns="30" />
+        <dataField fieldName="Nombre" columns="30" />
+        <dataField fieldName="Rfc" columns="20" />
+        <dataField fieldName="FechaResidencia" columns="10" />
+        <dataField fieldName="FechaNacimiento" columns="10" />
+        <dataField fieldName="FechaRevisionSalario" columns="10" />
+        <dataField fieldName="Multilingue" />
+        <dataField fieldName="Pasaporte" />
+        <dataField fieldName="Idiomas" columns="50" />
+        <dataField fieldName="LugarMatrimonio" columns="50" />
+        <dataField fieldName="LugarNacimiento" columns="50" />
+        <dataField fieldName="IDTransporte" columns="3" />
+        <dataField fieldName="Nacionalidad" columns="20" />
+        <dataField fieldName="IDTipovivienda" columns="2" />
+        <dataField fieldName="IDEstadonacimiento" columns="3" />
+        <dataField fieldName="IDMunicipionacimiento" columns="6" />
+        <dataField fieldName="CursosAnteriores" />
+        <dataField fieldName="PuestosAnteriores" />
+        <dataField fieldName="EstudiaActualmente" />
+        <dataField fieldName="HorarioEstudiante" />
+        <dataField fieldName="ZonaEconomica" columns="1" />
+        <dataField fieldName="Foto" columns="15" />
+        <dataField fieldName="Firma" columns="15" />
+        <dataField fieldName="IDPlantilla" columns="10" />
+        <dataField fieldName="IDJefedirecto" columns="15" />
+        <dataField fieldName="FechaIngreso" columns="10" />
+        <dataField fieldName="FechaBaja" columns="10" />
+        <dataField fieldName="FechaPrestaciones" columns="10" />
+        <dataField fieldName="FechaSigEvaluacion" columns="10" />
+        <dataField fieldName="FechaInicioContrato" columns="10" />
+        <dataField fieldName="FechaVencContra" columns="10" />
+        <dataField fieldName="IDPatron" columns="1" />
+        <dataField fieldName="IDTabulador" columns="10" />
+        <dataField fieldName="IDPrestaciones" columns="1" />
+        <dataField fieldName="SalarioTabulador" />
+        <dataField fieldName="SalarioIntegradoAnterior" columns="15" />
+        <dataField fieldName="SalarioDiarioAnterior" columns="15" />
+        <dataField fieldName="SalarioDiario" columns="15" />
+        <dataField fieldName="FactorIntegracion" columns="15" />
+        <dataField fieldName="SalarioVariables" columns="15" />
+        <dataField fieldName="IDPuesto" columns="10" />
+        <dataField fieldName="IDTurno" columns="10" />
+        <dataField fieldName="IDDepartamento" columns="10" />
+        <dataField fieldName="IDCentrocosto" columns="10" />
+        <dataField fieldName="IDClasificacion" columns="10" />
+        <dataField fieldName="IDSupervisor" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Empleado" showInSelector="false">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Empleado" newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDEmpleado" columns="15" readOnly="true" />
+            <dataField fieldName="NombreCompleto" />
+            <dataField fieldName="PasswordPortal" textMode="Password" readOnly="true" columns="50" />
+            <dataField fieldName="ConfirmarPassword" columns="50" />
+            <dataField fieldName="NuevoPassword" columns="50" textMode="Password" />
+            <dataField fieldName="ConfirmarContrasena" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Empleado">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Empleado" newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDEmpleado" columns="15" />
+            <dataField fieldName="ApellidoPaterno" columns="30" />
+            <dataField fieldName="ApellidoMaterno" columns="30" />
+            <dataField fieldName="Nombre" columns="30" />
+            <dataField fieldName="Rfc" columns="20" />
+            <dataField fieldName="FechaResidencia" columns="10" />
+            <dataField fieldName="FechaNacimiento" columns="10" />
+            <dataField fieldName="FechaRevisionSalario" columns="10" />
+            <dataField fieldName="Multilingue" />
+            <dataField fieldName="Pasaporte" />
+            <dataField fieldName="Idiomas" columns="50" />
+            <dataField fieldName="LugarMatrimonio" columns="50" />
+            <dataField fieldName="LugarNacimiento" columns="50" />
+            <dataField fieldName="IDTransporte" columns="3" />
+            <dataField fieldName="Nacionalidad" columns="20" />
+            <dataField fieldName="IDTipovivienda" columns="2" />
+            <dataField fieldName="IDEstadonacimiento" columns="3" />
+            <dataField fieldName="IDMunicipionacimiento" columns="6" />
+            <dataField fieldName="CursosAnteriores" />
+            <dataField fieldName="PuestosAnteriores" />
+            <dataField fieldName="EstudiaActualmente" />
+            <dataField fieldName="HorarioEstudiante" />
+            <dataField fieldName="ZonaEconomica" columns="1" />
+            <dataField fieldName="Foto" columns="15" />
+            <dataField fieldName="Firma" columns="15" />
+            <dataField fieldName="IDPlantilla" columns="10" />
+            <dataField fieldName="IDJefedirecto" columns="15" />
+            <dataField fieldName="FechaIngreso" columns="10" />
+            <dataField fieldName="FechaBaja" columns="10" />
+            <dataField fieldName="FechaPrestaciones" columns="10" />
+            <dataField fieldName="FechaSigEvaluacion" columns="10" />
+            <dataField fieldName="FechaInicioContrato" columns="10" />
+            <dataField fieldName="FechaVencContra" columns="10" />
+            <dataField fieldName="IDPatron" columns="1" />
+            <dataField fieldName="IDTabulador" columns="10" />
+            <dataField fieldName="IDPrestaciones" columns="1" />
+            <dataField fieldName="SalarioTabulador" />
+            <dataField fieldName="SalarioIntegradoAnterior" columns="15" />
+            <dataField fieldName="SalarioDiarioAnterior" columns="15" />
+            <dataField fieldName="SalarioDiario" columns="15" />
+            <dataField fieldName="FactorIntegracion" columns="15" />
+            <dataField fieldName="SalarioVariables" columns="15" />
+            <dataField fieldName="IDPuesto" columns="10" />
+            <dataField fieldName="IDTurno" columns="10" />
+            <dataField fieldName="IDDepartamento" columns="10" />
+            <dataField fieldName="IDCentrocosto" columns="10" />
+            <dataField fieldName="IDClasificacion" columns="10" />
+            <dataField fieldName="IDSupervisor" columns="10" />
+            <dataField fieldName="PasswordPortal" columns="30" />
+            <dataField fieldName="CreadoPor" columns="50" />
+            <dataField fieldName="ModificadoPor" columns="50" />
+            <dataField fieldName="CreadoEn" columns="10" />
+            <dataField fieldName="ModificadoEn" columns="10" />
+            <dataField fieldName="IDRuta" columns="5" />
+            <dataField fieldName="IDDelegacion" columns="10" />
+            <dataField fieldName="SalarioTope" columns="15" />
+            <dataField fieldName="Discapacidad" />
+            <dataField fieldName="TipoDiscapacidad" columns="15" />
+            <dataField fieldName="Institucion" columns="50" />
+            <dataField fieldName="TipoInstitucion" columns="15" />
+            <dataField fieldName="CarreraTerminada" columns="50" />
+            <dataField fieldName="TipoDocProb" columns="15" />
+            <dataField fieldName="AnioEmision" columns="15" />
+            <dataField fieldName="SalarioPercepcionesFijas" columns="15" />
+            <dataField fieldName="CuentaContable" columns="30" />
+            <dataField fieldName="CuentaContable2" columns="30" />
+            <dataField fieldName="UsID" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="LookUp" commandId="command1" type="Grid" label="Look Up" showInSelector="false">
+      <dataFields>
+        <dataField fieldName="IDEmpleado" columns="15" />
+        <dataField fieldName="NombreCompleto" />
+      </dataFields>
+    </view>
+    <view id="Logeado" commandId="command1" type="Grid" label="Logeado" filter="RFC = @BusinessRules_UserName" showInSelector="false">
+      <dataFields>
+        <dataField fieldName="IDEmpleado" columns="15" />
+        <dataField fieldName="NombreCompleto" />
+      </dataFields>
+    </view>
+    <view id="Password" commandId="command1" type="Grid" label="Password" showInSelector="false" filter="RFC = @BusinessRules_UserName">
+      <dataFields>
+        <dataField fieldName="IDEmpleado" columns="15" />
+        <dataField fieldName="NombreCompleto" />
+        <dataField fieldName="PasswordPortal" columns="30" textMode="Password" />
+      </dataFields>
+    </view>
+    <view id="Jefe" commandId="command1" type="Grid" label="Jefe" filter="ID_Empleado = (SELECT ID_Empleado FROM EMPLEADO WHERE RFC = @BusinessRules_UserName)" showInSelector="false">
+      <dataFields>
+        <dataField fieldName="IDEmpleado" columns="15" />
+        <dataField fieldName="IDJefedirecto" columns="15" />
+      </dataFields>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" commandArgument="Password" />
+      <action id="a3" commandName="Delete" roles="None" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" roles="None" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" roles="None" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" roles="None" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" roles="None" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" roles="None" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="Calculate|Update" view="editForm1" type="Sql" phase="Execute" name="E_Contrasena"><![CDATA[declare @Success nvarchar (5) = 'true'
+if (@PasswordPortal is not null and @ConfirmarPassword is not null and @ConfirmarContrasena is not null and @NuevoPassword is not null)
+begin
+    if (@PasswordPortal != @ConfirmarPassword)
+	begin
+		set @Result_Focus = 'ConfirmarPassword, Ingresa correctamente tu contraseña anterior por favor.'
+    	set @Success = 'false'
+	end
+	if (@NuevoPassword != @ConfirmarContrasena)
+	begin
+		set @Result_Focus = 'ConfirmarContrasena, La confirmación de la nueva contraseña no coincide.'
+    	set @Success = 'false'
+	end
+end
+if (@Arguments_CommandName = 'Calculate' or @Success = 'false')
+begin
+    set @BusinessRules_PreventDefault = 1
+end
+if (@Success = 'true')
+begin
+	UPDATE Empleado
+	SET PasswordPortal = @ConfirmarContrasena
+	WHERE ID_Empleado = @IDEmpleado
+end]]></rule>
+  </businessRules>
+</dataController>

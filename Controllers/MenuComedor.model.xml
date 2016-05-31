@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="MenuComedor" alias="MenuComedor" created="2016-05-30T11:00:30" modified="2016-05-31T07:37:18" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column fieldName="IDMenucomedor" name="ID_MenuComedor" label="ID Menu Comedor" />
+    <column fieldName="Platillo" name="Platillo" label="Platillo" />
+    <column fieldName="Descripcion" name="Descripcion" label="Descripcion" />
+    <column fieldName="FechaCreacion" name="FechaCreacion" label="Fecha Creacion" format="g" />
+    <column fieldName="CreadoPor" name="CreadoPor" label="Creado Por" />
+    <column fieldName="Image" name="Image" label="Image" />
+    <column fieldName="ImageFileName" name="ImageFileName" label="Image File Name" />
+    <column fieldName="ImageContentType" name="ImageContentType" label="Image Content Type" />
+    <column fieldName="ImageLength" name="ImageLength" label="Image Length" />
+    <column name="FechaDisponible" fieldName="FechaDisponible" label="Fecha Disponible" format="g" />
+    <column name="IDMenuComedor" fieldName="IdmenuComedor" label="Idmenu Comedor" />
+    <column name="Comida" fieldName="Comida" label="Comida" />
+    <column name="Tipo" fieldName="Tipo" label="Tipo" />
+  </columns>
+</dataModel>

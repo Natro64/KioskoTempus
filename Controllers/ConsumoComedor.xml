@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="ConsumoComedor" conflictDetection="overwriteChanges" label="Consumo Comedor" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"ConsumoComedor"."ID_ConsumoComedor" "IDConsumocomedor"
+	,"ConsumoComedor"."ID_Empleado" "IDEmpleado"
+	,"TheID_Empleado"."NombreCompleto" "TheidEmpleadonombrecompleto"
+	,"ConsumoComedor"."FechaConsumo" "FechaConsumo"
+	,"ConsumoComedor"."FechaCreacion" "FechaCreacion"
+	,"ConsumoComedor"."ID_ComidaComedor" "IDComidacomedor"
+	,"ConsumoComedor"."CreadoPor" "CreadoPor"
+from "dbo"."ConsumoComedor" "ConsumoComedor"
+	left join "dbo"."Empleado" "TheID_Empleado" on "ConsumoComedor"."ID_Empleado" = "TheID_Empleado"."ID_Empleado"
+]]></text>
+    </command>
+    <command id="ID_ConsumoComedorIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ID_ConsumoComedor" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="IDConsumocomedor" type="Int32" allowNulls="false" isPrimaryKey="true" label="ID Consumo Comedor" readOnly="true" />
+    <field name="IDEmpleado" type="Int32" allowNulls="false" label="Empleado" showInSummary="true">
+      <items style="Lookup" dataController="Empleado" newDataView="createForm1" dataValueField="IDEmpleado" dataView="LookUp" dataTextField="NombreCompleto" />
+    </field>
+    <field name="TheidEmpleadonombrecompleto" type="String" label="Empleado" readOnly="true" length="92" />
+    <field name="FechaConsumo" type="DateTime" allowNulls="false" label="Fecha de consumo" showInSummary="true" />
+    <field name="FechaCreacion" type="DateTime" dataFormatString="g" default="(NULL)" label="Fecha Creacion" showInSummary="true" />
+    <field name="IDComidacomedor" type="Int32" allowNulls="false" label="Comida" showInSummary="true">
+      <items style="Lookup" dataController="MenuComedor" newDataView="createForm1" dataValueField="IdmenuComedor" dataTextField="Comida" dataView="v100" copy="FechaConsumo=FechaDisponible" />
+    </field>
+    <field name="CreadoPor" type="String" allowNulls="false" label="Creado Por" length="40" showInSummary="true" />
+    <field name="Comida" type="Int32" allowNulls="false" label="Comida" showInSummary="true">
+      <items style="DropDownList" dataController="Comida" newDataView="createForm1" dataValueField="Idcomida" dataTextField="Platillo" />
+    </field>
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Consumo Comedor" sortExpression="FechaCreacion desc" showInSelector="false">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="IDEmpleado" aliasFieldName="TheidEmpleadonombrecompleto" />
+        <dataField fieldName="FechaConsumo" columns="10" />
+        <dataField fieldName="FechaCreacion" columns="10" />
+        <dataField fieldName="IDComidacomedor" columns="15" />
+        <dataField fieldName="CreadoPor" columns="40" />
+      </dataFields>
+    </view>
+    <view id="v100" type="Grid" commandId="command1" label="Consumos" filter="ConsumoComedor.ID_Empleado = (SELECT ID_Empleado from Empleado where RFC = @BusinessRules_UserName)" showInSelector="false">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="IDEmpleado" aliasFieldName="TheidEmpleadonombrecompleto" />
+        <dataField fieldName="FechaConsumo" columns="10" />
+        <dataField fieldName="FechaCreacion" columns="10" />
+        <dataField fieldName="IDComidacomedor" columns="15" />
+        <dataField fieldName="CreadoPor" columns="40" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Consumo Comedor">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Consumo Comedor" newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDEmpleado" aliasFieldName="TheidEmpleadonombrecompleto" tag="lookup-details-hidden" />
+            <dataField fieldName="FechaConsumo" columns="10" />
+            <dataField fieldName="FechaCreacion" columns="10" textMode="Static" />
+            <dataField fieldName="IDComidacomedor" columns="15" />
+            <dataField fieldName="CreadoPor" columns="40" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Consumo Comedor">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Consumo Comedor" newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDEmpleado" aliasFieldName="TheidEmpleadonombrecompleto" />
+            <dataField fieldName="IDComidacomedor" columns="15" />
+            <dataField fieldName="FechaConsumo" columns="10" textMode="Static" />
+            <dataField fieldName="FechaCreacion" columns="10" hidden="true" />
+            <dataField fieldName="CreadoPor" columns="40" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" roles="Administrators, RecursosHumanos" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" roles="Administrators, RecursosHumanos" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" roles="None" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" roles="Administrators, RecursosHumanos" />
+      <action id="a2" commandName="Delete" roles="Administrators, RecursosHumanos" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" roles="Administrators, RecursosHumanos" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" roles="Administrators, RecursosHumanos" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" roles="Administrators, RecursosHumanos" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" roles="Administrators, RecursosHumanos" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" roles="Administrators, RecursosHumanos" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+  </actions>
+</dataController>

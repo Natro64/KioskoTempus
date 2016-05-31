@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Solicitudes" conflictDetection="overwriteChanges" label="Solicitudes" handler="IXport.Rules.SolicitudesBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Solicitudes"."ID_Solicitud" "IDSolicitud"
+	,"Solicitudes"."FechaSolicitud" "FechaSolicitud"
+	,"Solicitudes"."ID_Empleado" "IDEmpleado"
+	,"TheID_Empleado"."NombreCompleto" "NombreCompleto"
+	,"Solicitudes"."ID_TipoSolicitud" "IDTiposolicitud"
+	,"TheID_TipoSolicitud"."Observaciones" "TheidTiposolicitudobservaciones"
+	,"Solicitudes"."FechaSolicitada" "FechaSolicitada"
+	,"Solicitudes"."Cantidad" "Cantidad"
+	,"Solicitudes"."Notas" "Notas"
+	,"Solicitudes"."Observaciones" "Observaciones"
+	,"Solicitudes"."ModificadoPor" "ModificadoPor"
+	,"Solicitudes"."FechaModificacion" "FechaModificacion"
+	,"Solicitudes"."ID_Jefe" "IDJefe"
+	,"Solicitudes"."ID_Motivo" "IDMotivo"
+	,"Solicitudes"."ID_EstatusSolicitud" "IDEstatussolicitud"
+from "dbo"."Solicitudes" "Solicitudes"
+	left join "dbo"."Empleado" "TheID_Empleado" on "Solicitudes"."ID_Empleado" = "TheID_Empleado"."ID_Empleado"
+	left join "dbo"."TipoSolicitud" "TheID_TipoSolicitud" on "Solicitudes"."ID_TipoSolicitud" = "TheID_TipoSolicitud"."ID_TipoSolicitud"
+]]></text>
+    </command>
+    <command id="ID_SolicitudIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ID_Solicitud" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="IDSolicitud" type="Int32" allowNulls="false" isPrimaryKey="true" label="ID Solicitud" hidden="false" />
+    <field name="FechaSolicitud" type="DateTime" allowNulls="false" default="(getdate())" label="Fecha Solicitud" showInSummary="true">
+      <formula>select GETDATE()</formula>
+    </field>
+    <field name="IDEmpleado" type="Int32" allowNulls="false" label="Numero Empleado" showInSummary="true">
+      <items style="AutoComplete" dataController="Empleado" newDataView="createForm1" dataValueField="IDEmpleado" dataView="Logeado" dataTextField="NombreCompleto" />
+      <formula>"Empleado"."ID_Empleado"</formula>
+    </field>
+    <field name="NombreCompleto" type="String" label="Empleado" readOnly="true" length="92">
+      <formula />
+    </field>
+    <field name="IDTiposolicitud" type="Int32" label="Tipo Solicitud" showInSummary="true" allowNulls="false">
+      <items style="RadioButtonList" dataController="TipoSolicitud" newDataView="createForm1" dataValueField="IDTiposolicitud" dataTextField="Descripcion" dataView="grid1" />
+    </field>
+    <field name="TheidTiposolicitudobservaciones" type="String" readOnly="true" label="Tipo de solicitud" length="50" />
+    <field name="FechaSolicitada" type="DateTime" allowNulls="false" label="Fecha Solicitada" showInSummary="true" />
+    <field name="Cantidad" type="Decimal" allowNulls="false" label="Cantidad" showInSummary="true" />
+    <field name="Notas" type="String" label="Notas" length="80" />
+    <field name="Observaciones" type="String" label="Observaciones" length="60" writeRoles="Administrators, RecursosHumanos, Supervisor" />
+    <field name="ModificadoPor" type="String" label="Modificado Por" length="20" />
+    <field name="FechaModificacion" type="DateTime" dataFormatString="g" label="Fecha Modificacion" />
+    <field name="IDJefe" type="Int32" label="Jefe">
+      <items style="Lookup" dataController="Empleado" dataView="Jefe" dataTextField="IDJefedirecto" dataValueField="IDJefedirecto" />
+    </field>
+    <field name="IDMotivo" type="Int32" label="Motivo">
+      <items style="RadioButtonList" dataController="Motivo" newDataView="createForm1" dataValueField="IDMotivo" dataTextField="Descripcion" />
+    </field>
+    <field name="IDEstatussolicitud" type="Byte" default="((0))" label="Estatus Solicitud" allowNulls="false">
+      <items style="RadioButtonList" dataController="EstatusSolicitud" newDataView="createForm1" dataValueField="IDEstatussolicitud" dataTextField="Descripcion" dataView="grid1" />
+    </field>
+    <field name="Descripcion" type="String" allowNulls="false" label="Descripcion" length="25" showInSummary="true" />
+    <field name="CurrentUserName" type="String" readOnly="true" label="Current User" allowQBE="false" allowSorting="false" computed="true" htmlEncode="false" hidden="false" length="92">
+      <items letters="false" />
+      <formula>@BusinessRules_UserName</formula>
+    </field>
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Solicitudes" sortExpression="FechaSolicitud desc" showInSelector="false">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="FechaSolicitud" columns="10" />
+        <dataField fieldName="IDEmpleado" aliasFieldName="NombreCompleto">
+          <visibility>
+            <expression test="[@BusinessRules_UserName] == 'MARONO AGUILAR FERNANDO MANUEL'" type="ClientScript" />
+          </visibility>
+        </dataField>
+        <dataField fieldName="IDTiposolicitud" aliasFieldName="TheidTiposolicitudobservaciones" />
+        <dataField fieldName="FechaSolicitada" columns="10" />
+        <dataField fieldName="Cantidad" columns="15" />
+        <dataField fieldName="Notas">
+          <visibility>
+            <expression test="[Notas] != null" type="ClientScript" />
+          </visibility>
+        </dataField>
+        <dataField fieldName="ModificadoPor" columns="20">
+          <visibility>
+            <expression test="[ModificadoPor] != 'null'" type="ClientScript" />
+          </visibility>
+        </dataField>
+        <dataField fieldName="FechaModificacion" columns="10">
+          <visibility>
+            <expression test="[ModificadoPor] != 'null'" type="ClientScript" />
+          </visibility>
+        </dataField>
+        <dataField fieldName="IDJefe" columns="15" />
+        <dataField fieldName="IDMotivo" columns="15" />
+        <dataField fieldName="IDEstatussolicitud" columns="15" />
+      </dataFields>
+    </view>
+    <view id="v101" type="Grid" commandId="command1" label="Solicitudes Pendientes" sortExpression="FechaSolicitud desc" filter="ID_StatusSolicitud != 3" showInSelector="false">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="FechaSolicitud" columns="10" />
+        <dataField fieldName="IDEmpleado" aliasFieldName="NombreCompleto">
+          <visibility>
+            <expression test="[@BusinessRules_UserName] == 'MARONO AGUILAR FERNANDO MANUEL'" type="ClientScript" />
+          </visibility>
+        </dataField>
+        <dataField fieldName="IDTiposolicitud" aliasFieldName="TheidTiposolicitudobservaciones" />
+        <dataField fieldName="FechaSolicitada" columns="10" />
+        <dataField fieldName="Cantidad" columns="15" />
+        <dataField fieldName="Notas" />
+        <dataField fieldName="ModificadoPor" columns="20" />
+        <dataField fieldName="FechaModificacion" columns="10" />
+        <dataField fieldName="IDJefe" columns="15" />
+        <dataField fieldName="IDMotivo" columns="15" />
+        <dataField fieldName="Observaciones" hidden="true">
+          <visibility>
+            <expression test="[Observaciones] != null" type="ClientScript" />
+          </visibility>
+        </dataField>
+        <dataField fieldName="IDEstatussolicitud" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Solicitudes" showInSelector="false">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Solicitudes" floating="true" newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="FechaSolicitud" columns="10" readOnly="true" />
+            <dataField fieldName="IDEmpleado" aliasFieldName="NombreCompleto" textMode="Static" tag="lookup-details-hidden" />
+            <dataField fieldName="IDTiposolicitud" aliasFieldName="TheidTiposolicitudobservaciones" textMode="Static" tag="lookup-details-hidden" />
+            <dataField fieldName="FechaSolicitada" columns="10" textMode="Static" />
+            <dataField fieldName="Cantidad" columns="15" textMode="Static" />
+            <dataField fieldName="Notas" textMode="Static" />
+            <dataField fieldName="IDJefe" columns="15" hidden="true" />
+            <dataField fieldName="IDEstatussolicitud" columns="15" tag="lookup-details-hidden" />
+            <dataField fieldName="IDMotivo" columns="15" tag="lookup-details-hidden" />
+            <dataField fieldName="Observaciones" />
+            <dataField fieldName="FechaModificacion" columns="10" textMode="Static" hidden="true">
+              <visibility>
+                <expression test="[FechaModificacion] != null" type="ClientScript" />
+              </visibility>
+            </dataField>
+            <dataField fieldName="ModificadoPor" columns="20" textMode="Static" hidden="true">
+              <visibility>
+                <expression test="[ModificadoPor] != null" type="ClientScript" />
+              </visibility>
+            </dataField>
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="editForm2" type="Form" commandId="command1" label="Review Solicitudes" showInSelector="false">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Solicitudes" floating="true" newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="FechaSolicitud" columns="10" readOnly="true" />
+            <dataField fieldName="IDEmpleado" aliasFieldName="NombreCompleto" textMode="Static" tag="lookup-details-hidden" />
+            <dataField fieldName="IDTiposolicitud" aliasFieldName="TheidTiposolicitudobservaciones" textMode="Static" tag="lookup-details-hidden" />
+            <dataField fieldName="FechaSolicitada" columns="10" textMode="Static" />
+            <dataField fieldName="Cantidad" columns="15" textMode="Static" />
+            <dataField fieldName="Notas" textMode="Static" />
+            <dataField fieldName="ModificadoPor" columns="20" textMode="Static">
+              <visibility>
+                <expression test="[ModificadoPor] != 'null'" type="ClientScript" />
+              </visibility>
+            </dataField>
+            <dataField fieldName="FechaModificacion" columns="10" textMode="Static" hidden="true">
+              <visibility>
+                <expression test="[FechaModificacion] != 'null'" type="ClientScript" />
+              </visibility>
+            </dataField>
+            <dataField fieldName="IDEstatussolicitud" columns="15" textMode="Static" tag="lookup-details-hidden" />
+            <dataField fieldName="Observaciones" textMode="Static">
+              <visibility>
+                <expression test="[Observaciones] != null" type="ClientScript" />
+              </visibility>
+            </dataField>
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Solicitudes">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Solicitudes" newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="FechaSolicitud" columns="10" hidden="true" />
+            <dataField fieldName="IDEmpleado" aliasFieldName="NombreCompleto" textMode="Static" hidden="true" />
+            <dataField fieldName="IDTiposolicitud" aliasFieldName="TheidTiposolicitudobservaciones" />
+            <dataField fieldName="FechaSolicitada" columns="10" />
+            <dataField fieldName="Cantidad" columns="15" />
+            <dataField fieldName="Notas" />
+            <dataField fieldName="IDEstatussolicitud" columns="15" hidden="true" />
+            <dataField fieldName="IDJefe" columns="15" hidden="true" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="Solicitud" commandId="command1" type="Grid" label="Solicitud" filter="RFC = @BusinessRules_UserName" sortExpression="FechaSolicitud desc" showInSelector="false">
+      <dataFields>
+        <dataField fieldName="FechaSolicitud" columns="10" />
+        <dataField fieldName="TheidTiposolicitudobservaciones" columns="50" />
+        <dataField fieldName="FechaSolicitada" columns="10" />
+        <dataField fieldName="Cantidad" columns="15" />
+        <dataField fieldName="Observaciones">
+          <visibility>
+            <expression test="[Observaciones] != null" type="ClientScript" />
+          </visibility>
+        </dataField>
+        <dataField fieldName="IDEstatussolicitud" columns="15" />
+        <dataField fieldName="FechaModificacion" columns="10" hidden="true">
+          <visibility>
+            <expression test="[FechaModificacion] != null" type="ClientScript" />
+          </visibility>
+        </dataField>
+      </dataFields>
+    </view>
+    <view id="v100" commandId="command1" type="Grid" label="Solicitud" showInSelector="false" sortExpression="FechaSolicitud desc" filter="Solicitudes.ID_Jefe = (SELECT ID_Empleado FROM Empleado WHERE RFC = @BusinessRules_UserName)">
+      <dataFields>
+        <dataField fieldName="FechaSolicitud" columns="10" />
+        <dataField fieldName="IDEmpleado" aliasFieldName="NombreCompleto">
+          <visibility>
+            <expression test="[@BusinessRules_UserName] == 'MARONO AGUILAR FERNANDO MANUEL'" type="ClientScript" />
+          </visibility>
+        </dataField>
+        <dataField fieldName="TheidTiposolicitudobservaciones" columns="50" />
+        <dataField fieldName="FechaSolicitada" columns="10" />
+        <dataField fieldName="Cantidad" columns="15" />
+        <dataField fieldName="Notas" rows="5" />
+      </dataFields>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" roles="Administrators, RecursosHumanos, Supervisor" />
+      <action id="a100" commandName="Select" commandArgument="editForm2" roles="Users" />
+      <action id="a2" commandName="Edit" whenClientScript="[IDEstatussolicitud] != '3' &amp;&amp; [IDEstatussolicitud] != '5'" roles="Administrators, RecursosHumanos, Supervisor" />
+      <action id="a3" commandName="Delete" roles="None" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" roles="None" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" whenClientScript="[IDEstatussolicitud] != '3' &amp;&amp; [IDEstatussolicitud] != '5'" roles="Administrators, RecursosHumanos, Supervisor" />
+      <action id="a2" commandName="Delete" roles="None" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" roles="None" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" whenClientScript="[IDEstatussolicitud] != '3' &amp;&amp; [IDEstatussolicitud] != '5'" roles="Administrators, RecursosHumanos, Supervisor" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" roles="None" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="Calculate|Insert|Update" type="Sql" phase="Execute" name="S_ValidarFechas"><![CDATA[declare @Success nvarchar (5) = 'true'
+if (@FechaSolicitud is not null and @FechaSolicitada is not null and @FechaSolicitada < @FechaSolicitud)
+begin
+    set @Result_Focus = 'FechaSolicitada, La fecha solicitada debe de ser después a la fecha de solicitud'
+    set @Success = 'false'
+end
+
+if (@FechaSolicitada is not null and @FechaSolicitada < getDate())
+begin
+    set @Result_Focus = 'FechaSolicitada, La fecha solicitada debe de ser después del día actual.'
+    set @Success = 'false'
+end
+
+if (@Arguments_CommandName = 'Calculate' or @Success = 'false')
+    set @BusinessRules_PreventDefault = 1]]></rule>
+    <rule id="r101" commandName="Insert" type="Sql" phase="Execute" name="S_Solicitud_GetDateTime"><![CDATA[update Solicitudes
+set FechaSolicitud = GETDATE()
+where ID_Solicitud = @IDSolicitud]]></rule>
+    <rule id="r103" commandName="Select" type="Sql" phase="Before" name="Solicitudes_EmpleadosSupervisor" view="v100"><![CDATA[SELECT FechaSolicitud, NombreCompleto, NombreTabla, FechaSolicitada, Cantidad, Notas FROM dbo.Solicitudes, dbo.Empleado, dbo.TipoSolicitud
+WHERE Empleado.ID_Empleado = Solicitudes.ID_Empleado AND Solicitudes.ID_TipoSolicitud = TipoSolicitud.ID_TipoSolicitud AND ID_JefeDirecto = (SELECT ID_Empleado FROM dbo.Empleado WHERE RFC = @BusinessRules_UserName);]]></rule>
+    <rule id="r102" commandName="Select" type="Code" phase="Before" name="Solicitudes_Empleado_Supervisor" />
+    <rule id="r104" commandName="Update" type="Sql" phase="After" name="S_Editado"><![CDATA[update Solicitudes
+set ModificadoPor = @BusinessRules_UserName,
+    FechaModificacion = GETDATE()
+where ID_Solicitud = @IDSolicitud]]></rule>
+    <rule id="r105" commandName="Calculate|Insert|Update" type="Sql" phase="Execute" name="S_Cantidad"><![CDATA[declare @Success nvarchar (5) = 'true'
+if (@Cantidad is not null and @Cantidad < 1)
+begin
+    set @Result_Focus = 'Cantidad, Ingresa una cantidad válida.'
+    set @Success = 'false'
+end
+
+if (@Arguments_CommandName = 'Calculate' or @Success = 'false')
+    set @BusinessRules_PreventDefault = 1]]></rule>
+    <rule id="r106" commandName="Select|Insert|Update" type="Sql" phase="Execute" name="S_Select_Empleado" view="createForm1"><![CDATA[SET @IDEmpleado = (SELECT ID_Empleado 
+			   		FROM Empleado 
+			   		WHERE RFC = @BusinessRules_UserName)]]></rule>
+    <rule id="r107" commandName="Select|Insert|Update" view="createForm1" type="Sql" phase="Execute" name="S_Select_Jefe"><![CDATA[SET @IDJefe = (SELECT ID_JefeDirecto
+			   		FROM Empleado 
+			   		WHERE RFC = @BusinessRules_UserName)]]></rule>
+    <rule id="r108" commandName="Insert|Update" type="Sql" phase="After" name="S_AhorroAprobado" view="editForm1"><![CDATA[if (@IDEstatussolicitud is not null and @IDEstatussolicitud = 3 and @IDTiposolicitud is not null and @IDTiposolicitud = 1)
+begin
+	INSERT INTO dbo.Ahorro
+        ( ID_TipoAhorro , ID_Empleado , OtrosAbonos , OtrosCargos , Fecha , Formula , Cantidad , SaldoInicial ,
+          Status , SaldoActual , Total , CreadoPor , ModificadoPor , CreadoEn , ModificadoEn , CuentaContable ,
+          Observaciones , FormulaSQL , SaldarFiniquito
+        )
+VALUES  ( '1' , -- ID_TipoAhorro - char(1)
+          @IDEmpleado , -- ID_Empleado - int
+          0 , -- OtrosAbonos - numeric
+          0 , -- OtrosCargos - numeric
+          @FechaSolicitada , -- Fecha - datetime
+          '' , -- Formula - varchar(8000)
+          @Cantidad , -- Cantidad - smallint
+          0.00 , -- SaldoInicial - numeric
+          0 , -- Status - smallint
+          0.00 , -- SaldoActual - numeric
+          0.00 , -- Total - numeric
+          @BusinessRules_UserName , -- CreadoPor - varchar(50)
+          @BusinessRules_UserName , -- ModificadoPor - varchar(50)
+          GETDATE() , -- CreadoEn - datetime
+          GETDATE() , -- ModificadoEn - datetime
+          '' , -- CuentaContable - varchar(30)
+          '' , -- Observaciones - varchar(100)
+          '' , -- FormulaSQL - varchar(8000)
+          ''  -- SaldarFiniquito - char(1)
+        )
+end]]></rule>
+    <rule id="r109" commandName="Insert|Update" type="Sql" phase="After" name="S_VacacionesAprobadas" view="editForm1"><![CDATA[if (@IDEstatussolicitud is not null and @IDEstatussolicitud = 3 and @IDTiposolicitud is not null and @IDTiposolicitud = 3)
+begin
+INSERT INTO dbo.Vacaciones
+        ( Id_Empleado , Fecha , TipoVacacion , Anio , FechaFin , Observaciones ,
+          DerechoPago , DiasPago , SaldoPago , DerechoGozo , DiasGoce , SaldoGoce ,
+          SalDiario , DerechoPrima , DiasPrima , SaldoPrima , Id_Prestaciones , Id_Periodo , 
+		  MovGlobal , FechaCaptura , CreadoPor , ModificadoPor , CreadoEn , ModificadoEn
+        )
+VALUES  ( @IDEmpleado , -- Id_Empleado - int
+          @FechaSolicitada , -- Fecha - datetime
+          1 , -- TipoVacacion - smallint
+          1 , -- Anio - smallint
+          (@FechaSolicitada+Cantidad) , -- FechaFin - datetime
+          '' , -- Observaciones - varchar(100)
+          0 , -- DerechoPago - numeric
+          0 , -- DiasPago - numeric
+          0 , -- SaldoPago - numeric
+          0 , -- DerechoGozo - numeric
+          0 , -- DiasGoce - numeric
+          0 , -- SaldoGoce - numeric
+          0 , -- SalDiario - numeric
+          0 , -- DerechoPrima - numeric
+          0 , -- DiasPrima - numeric
+          0 , -- SaldoPrima - numeric
+          '' , -- Id_Prestaciones - char(1)
+          '' , -- Id_Periodo - varchar(8)
+          0 , -- MovGlobal - bit
+          GETDATE() , -- FechaCaptura - datetime
+          @BusinessRules_UserName , -- CreadoPor - varchar(50)
+          @BusinessRules_UserName , -- ModificadoPor - varchar(50)
+          GETDATE() , -- CreadoEn - datetime
+          GETDATE()  -- ModificadoEn - datetime
+        )
+end]]></rule>
+    <rule id="r110" commandName="Insert|Update" view="editForm1" type="Sql" phase="After" name="S_PrestamoAprobado"><![CDATA[if (@IDEstatussolicitud is not null and @IDEstatussolicitud = 3 and @IDTiposolicitud is not null and @IDTiposolicitud = 2)
+begin
+INSERT INTO dbo.Prestamo
+        ( Referencia , Id_TipoPrestamo , Id_Empleado , Abonos , Cargos , FechaInicio , FormulaDescuento ,
+          Importe , NoAbonos , SaldoInicial , Estatus , Total , Saldo , CreadoPor , ModificadoPor , CreadoEn , 
+		  ModificadoEn , CuentaContable , Observaciones , FormulaDescuentoSQL , SaldarFiniquito
+        )
+VALUES  ( '' , -- Referencia - varchar(10) 
+          '4' , -- Id_TipoPrestamo - char(3)
+          @IDEmpleado , -- Id_Empleado - int
+          0 , -- Abonos - money
+          0 , -- Cargos - money
+          @FechaSolicitada , -- FechaInicio - date
+          '' , -- FormulaDescuento - varchar(4000)
+          @Cantidad , -- Importe - money
+          0 , -- NoAbonos - int
+          0 , -- SaldoInicial - money
+          0 , -- Estatus - smallint
+          0 , -- Total - money
+          0 , -- Saldo - money
+          @BusinessRules_UserName , -- CreadoPor - varchar(50)
+          @BusinessRules_UserName , -- ModificadoPor - varchar(50)
+          GETDATE() , -- CreadoEn - datetime
+          GETDATE() , -- ModificadoEn - datetime
+          '' , -- CuentaContable - varchar(30)
+          '' , -- Observaciones - varchar(100)
+          '' , -- FormulaDescuentoSQL - varchar(8000)
+          ''  -- SaldarFiniquito - char(1)
+        )
+end]]></rule>
+  </businessRules>
+</dataController>

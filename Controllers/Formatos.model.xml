@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Formatos" alias="Formatos" created="2016-05-27T16:57:50" modified="2016-05-30T16:26:36" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column fieldName="IDFormato" name="ID_Formato" label="ID Formato" />
+    <column fieldName="ExternalDocFileName" name="ExternalDocFileName" label="External Doc File Name" />
+    <column fieldName="ExternalDocLength" name="ExternalDocLength" label="External Doc Length" />
+    <column fieldName="ExternalDocContentType" name="ExternalDocContentType" label="External Doc Content Type" />
+    <column name="Descripcion" fieldName="Descripcion" label="Descripcion" />
+  </columns>
+</dataModel>

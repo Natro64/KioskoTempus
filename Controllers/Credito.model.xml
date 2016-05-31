@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Credito" alias="Credito" created="2016-05-17T07:07:12" modified="2016-05-17T07:07:14" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="TheID_Empleado" parentTableSchema="dbo" parentTableName="Empleado" x="324" y="20">
+      <foreignKeyColumn columnName="ID_Empleado" parentColumnName="ID_Empleado" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column fieldName="IDEmpleado" name="ID_Empleado" label="ID Empleado" aliasColumnName="NombreCompleto" aliasForeignKey="TheID_Empleado" />
+    <column fieldName="TheidEmpleadonombrecompleto" name="NombreCompleto" label="ID Empleado Nombre Completo" foreignKey="TheID_Empleado" />
+    <column fieldName="IDCredito" name="ID_Credito" label="ID Credito" />
+    <column fieldName="TipoDesc" name="TipoDesc" label="Tipo Desc" />
+    <column fieldName="Tipo" name="Tipo" label="Tipo" />
+    <column fieldName="InicioDesc" name="InicioDesc" label="Inicio Desc" format="g" />
+    <column fieldName="AsignaCredito" name="AsignaCredito" label="Asigna Credito" format="g" />
+    <column fieldName="NumCredito" name="NumCredito" label="Num Credito" />
+    <column fieldName="ValorDesc" name="ValorDesc" label="Valor Desc" />
+    <column fieldName="DismTasa" name="DismTasa" label="Dism Tasa" />
+    <column fieldName="CreadoPor" name="CreadoPor" label="Creado Por" />
+    <column fieldName="ModificadoPor" name="ModificadoPor" label="Modificado Por" />
+    <column fieldName="CreadoEn" name="CreadoEn" label="Creado En" format="g" />
+    <column fieldName="ModificadoEn" name="ModificadoEn" label="Modificado En" format="g" />
+    <column fieldName="Observaciones" name="Observaciones" label="Observaciones" />
+    <column fieldName="Activo" name="Activo" label="Activo" />
+  </columns>
+</dataModel>

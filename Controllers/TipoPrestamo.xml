@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="TipoPrestamo" conflictDetection="overwriteChanges" label="Tipo Prestamo" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"TipoPrestamo"."Id_TipoPrestamo" "IDTipoprestamo"
+	,"Id_TipoPrestamo"."Descripcion" "IDTipoprestamodescripcion"
+	,"Id_TipoPrestamoId_Concepto"."Alias" "IDTipoprestamoidConceptoalias"
+	,"Id_TipoPrestamoId_ConceptoID_TipoConcepto"."Descripcion" "IDTipoprestamoidConceptoidTipoconceptodescripcion"
+	,"Id_TipoPrestamoId_Concepto2"."Alias" "IDTipoprestamoidConcepto2alias"
+	,"Id_TipoPrestamoId_Concepto2ID_TipoConcepto"."Descripcion" "IDTipoprestamoidConcepto2idTipoconceptodescripcion"
+	,"TipoPrestamo"."Descripcion" "Descripcion"
+	,"TipoPrestamo"."DescripcionBilingue" "DescripcionBilingue"
+	,"TipoPrestamo"."Id_Concepto" "IDConcepto"
+	,"TheId_Concepto"."Alias" "TheidConceptoalias"
+	,"TheId_ConceptoID_TipoConcepto"."Descripcion" "TheidConceptoidTipoconceptodescripcion"
+	,"TipoPrestamo"."Id_Concepto2" "IDConcepto2"
+	,"Id_Concepto2"."Alias" "IDConcepto2alias"
+	,"Id_Concepto2ID_TipoConcepto"."Descripcion" "IDConcepto2idTipoconceptodescripcion"
+	,"TipoPrestamo"."SaldarEnFiniquito" "SaldarEnFiniquito"
+	,"TipoPrestamo"."AltaAutomatica" "AltaAutomatica"
+	,"TipoPrestamo"."Numero" "Numero"
+	,"TipoPrestamo"."Texto" "Texto"
+	,"TipoPrestamo"."CreadoPor" "CreadoPor"
+	,"TipoPrestamo"."ModificadoPor" "ModificadoPor"
+	,"TipoPrestamo"."CreadoEn" "CreadoEn"
+	,"TipoPrestamo"."ModificadoEn" "ModificadoEn"
+from "dbo"."TipoPrestamo" "TipoPrestamo"
+	left join "dbo"."TipoPrestamo" "Id_TipoPrestamo" on "TipoPrestamo"."Id_TipoPrestamo" = "Id_TipoPrestamo"."Id_TipoPrestamo"
+	left join "dbo"."Concepto" "Id_TipoPrestamoId_Concepto" on "Id_TipoPrestamo"."Id_Concepto" = "Id_TipoPrestamoId_Concepto"."Id_Concepto"
+	left join "dbo"."TipoConcepto" "Id_TipoPrestamoId_ConceptoID_TipoConcepto" on "Id_TipoPrestamoId_Concepto"."ID_TipoConcepto" = "Id_TipoPrestamoId_ConceptoID_TipoConcepto"."ID_TipoConcepto"
+	left join "dbo"."Concepto" "Id_TipoPrestamoId_Concepto2" on "Id_TipoPrestamo"."Id_Concepto2" = "Id_TipoPrestamoId_Concepto2"."Id_Concepto"
+	left join "dbo"."TipoConcepto" "Id_TipoPrestamoId_Concepto2ID_TipoConcepto" on "Id_TipoPrestamoId_Concepto2"."ID_TipoConcepto" = "Id_TipoPrestamoId_Concepto2ID_TipoConcepto"."ID_TipoConcepto"
+	left join "dbo"."Concepto" "TheId_Concepto" on "TipoPrestamo"."Id_Concepto" = "TheId_Concepto"."Id_Concepto"
+	left join "dbo"."TipoConcepto" "TheId_ConceptoID_TipoConcepto" on "TheId_Concepto"."ID_TipoConcepto" = "TheId_ConceptoID_TipoConcepto"."ID_TipoConcepto"
+	left join "dbo"."Concepto" "Id_Concepto2" on "TipoPrestamo"."Id_Concepto2" = "Id_Concepto2"."Id_Concepto"
+	left join "dbo"."TipoConcepto" "Id_Concepto2ID_TipoConcepto" on "Id_Concepto2"."ID_TipoConcepto" = "Id_Concepto2ID_TipoConcepto"."ID_TipoConcepto"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="IDTipoprestamo" type="String" allowNulls="false" isPrimaryKey="true" label="Id Tipo Prestamo" length="3" showInSummary="true">
+      <items style="Lookup" dataController="TipoPrestamo" newDataView="createForm1" dataValueField="IDTipoprestamo" />
+    </field>
+    <field name="IDTipoprestamodescripcion" type="String" readOnly="true" label="Id Tipo Prestamo Descripcion" length="50" />
+    <field name="IDTipoprestamoidConceptoalias" type="String" readOnly="true" label="Id Tipo Prestamo Id Concepto Alias" length="20" />
+    <field name="IDTipoprestamoidConceptoidTipoconceptodescripcion" type="String" readOnly="true" label="Id Tipo Prestamo Id Concepto ID Tipo Concepto Descripcion" length="50" />
+    <field name="IDTipoprestamoidConcepto2alias" type="String" readOnly="true" label="Id Tipo Prestamo Id Concepto2 Alias" length="20" />
+    <field name="IDTipoprestamoidConcepto2idTipoconceptodescripcion" type="String" readOnly="true" label="Id Tipo Prestamo Id Concepto2 ID Tipo Concepto Descripcion" length="50" />
+    <field name="Descripcion" type="String" allowNulls="false" label="Descripcion" length="50" showInSummary="true" />
+    <field name="DescripcionBilingue" type="String" label="Descripcion Bilingue" length="50" showInSummary="true" />
+    <field name="IDConcepto" type="Int16" label="Id Concepto" showInSummary="true">
+      <items style="Lookup" dataController="Concepto" newDataView="createForm1" dataValueField="IDConcepto" />
+    </field>
+    <field name="TheidConceptoalias" type="String" readOnly="true" label="Id Concepto Alias" length="20" />
+    <field name="TheidConceptoidTipoconceptodescripcion" type="String" readOnly="true" label="Id Concepto ID Tipo Concepto Descripcion" length="50" />
+    <field name="IDConcepto2" type="Int16" label="Id Concepto2" showInSummary="true">
+      <items style="Lookup" dataController="Concepto" newDataView="createForm1" dataValueField="IDConcepto" />
+    </field>
+    <field name="IDConcepto2alias" type="String" readOnly="true" label="Id Concepto2 Alias" length="20" />
+    <field name="IDConcepto2idTipoconceptodescripcion" type="String" readOnly="true" label="Id Concepto2 ID Tipo Concepto Descripcion" length="50" />
+    <field name="SaldarEnFiniquito" type="Int16" allowNulls="false" label="Saldar En Finiquito" />
+    <field name="AltaAutomatica" type="Int16" allowNulls="false" label="Alta Automatica" />
+    <field name="Numero" type="Decimal" label="Numero" />
+    <field name="Texto" type="String" label="Texto" length="50" />
+    <field name="CreadoPor" type="String" label="Creado Por" length="50" />
+    <field name="ModificadoPor" type="String" label="Modificado Por" length="50" />
+    <field name="CreadoEn" type="DateTime" dataFormatString="g" label="Creado En" />
+    <field name="ModificadoEn" type="DateTime" dataFormatString="g" label="Modificado En" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Tipo Prestamo">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="IDTipoprestamo" aliasFieldName="IDTipoprestamodescripcion" />
+        <dataField fieldName="IDTipoprestamoidConceptoalias" columns="20" />
+        <dataField fieldName="IDTipoprestamoidConceptoidTipoconceptodescripcion" columns="50" />
+        <dataField fieldName="IDTipoprestamoidConcepto2alias" columns="20" />
+        <dataField fieldName="IDTipoprestamoidConcepto2idTipoconceptodescripcion" columns="50" />
+        <dataField fieldName="Descripcion" columns="50" />
+        <dataField fieldName="DescripcionBilingue" columns="50" />
+        <dataField fieldName="IDConcepto" aliasFieldName="TheidConceptoalias" />
+        <dataField fieldName="TheidConceptoidTipoconceptodescripcion" columns="50" />
+        <dataField fieldName="IDConcepto2" aliasFieldName="IDConcepto2alias" />
+        <dataField fieldName="IDConcepto2idTipoconceptodescripcion" columns="50" />
+        <dataField fieldName="SaldarEnFiniquito" columns="15" />
+        <dataField fieldName="AltaAutomatica" columns="15" />
+        <dataField fieldName="Numero" columns="15" />
+        <dataField fieldName="Texto" columns="50" />
+        <dataField fieldName="CreadoPor" columns="50" />
+        <dataField fieldName="ModificadoPor" columns="50" />
+        <dataField fieldName="CreadoEn" columns="10" />
+        <dataField fieldName="ModificadoEn" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Tipo Prestamo">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Tipo Prestamo" newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDTipoprestamo" aliasFieldName="IDTipoprestamodescripcion" />
+            <dataField fieldName="IDTipoprestamoidConceptoalias" columns="20" />
+            <dataField fieldName="IDTipoprestamoidConceptoidTipoconceptodescripcion" columns="50" />
+            <dataField fieldName="IDTipoprestamoidConcepto2alias" columns="20" />
+            <dataField fieldName="IDTipoprestamoidConcepto2idTipoconceptodescripcion" columns="50" />
+            <dataField fieldName="Descripcion" columns="50" />
+            <dataField fieldName="DescripcionBilingue" columns="50" />
+            <dataField fieldName="IDConcepto" aliasFieldName="TheidConceptoalias" />
+            <dataField fieldName="TheidConceptoidTipoconceptodescripcion" columns="50" />
+            <dataField fieldName="IDConcepto2" aliasFieldName="IDConcepto2alias" />
+            <dataField fieldName="IDConcepto2idTipoconceptodescripcion" columns="50" />
+            <dataField fieldName="SaldarEnFiniquito" columns="15" />
+            <dataField fieldName="AltaAutomatica" columns="15" />
+            <dataField fieldName="Numero" columns="15" />
+            <dataField fieldName="Texto" columns="50" />
+            <dataField fieldName="CreadoPor" columns="50" />
+            <dataField fieldName="ModificadoPor" columns="50" />
+            <dataField fieldName="CreadoEn" columns="10" />
+            <dataField fieldName="ModificadoEn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Tipo Prestamo">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Tipo Prestamo" newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDTipoprestamo" aliasFieldName="IDTipoprestamodescripcion" />
+            <dataField fieldName="Descripcion" columns="50" />
+            <dataField fieldName="DescripcionBilingue" columns="50" />
+            <dataField fieldName="IDConcepto" aliasFieldName="TheidConceptoalias" />
+            <dataField fieldName="IDConcepto2" aliasFieldName="IDConcepto2alias" />
+            <dataField fieldName="SaldarEnFiniquito" columns="15" />
+            <dataField fieldName="AltaAutomatica" columns="15" />
+            <dataField fieldName="Numero" columns="15" />
+            <dataField fieldName="Texto" columns="50" />
+            <dataField fieldName="CreadoPor" columns="50" />
+            <dataField fieldName="ModificadoPor" columns="50" />
+            <dataField fieldName="CreadoEn" columns="10" />
+            <dataField fieldName="ModificadoEn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+  </actions>
+</dataController>

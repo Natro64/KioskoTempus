@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Concepto" alias="Concepto" created="2016-05-17T07:07:03" modified="2016-05-17T07:07:05" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="TheID_TipoConcepto" parentTableSchema="dbo" parentTableName="TipoConcepto" x="344" y="20">
+      <foreignKeyColumn columnName="ID_TipoConcepto" parentColumnName="ID_TipoConcepto" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column fieldName="IDConcepto" name="Id_Concepto" label="Id Concepto" />
+    <column fieldName="Alias" name="Alias" label="Alias" />
+    <column fieldName="Activo" name="Activo" label="Activo" />
+    <column fieldName="IDTipoconcepto" name="ID_TipoConcepto" label="ID Tipo Concepto" aliasColumnName="Descripcion" aliasForeignKey="TheID_TipoConcepto" />
+    <column fieldName="TheidTipoconceptodescripcion" name="Descripcion" label="ID Tipo Concepto Descripcion" foreignKey="TheID_TipoConcepto" />
+    <column fieldName="Descripcion" name="Descripcion" label="Descripcion" />
+    <column fieldName="ImprimirRecibo" name="ImprimirRecibo" label="Imprimir Recibo" />
+    <column fieldName="ImprimirListado" name="ImprimirListado" label="Imprimir Listado" />
+    <column fieldName="Mensual" name="Mensual" label="Mensual" />
+    <column fieldName="IDFiltro" name="Id_Filtro" label="Id Filtro" />
+    <column fieldName="GravaImss" name="GravaIMSS" label="Grava IMSS" />
+    <column fieldName="GravaIsr" name="GravaISR" label="Grava ISR" />
+    <column fieldName="Formula" name="Formula" label="Formula" />
+    <column fieldName="FormulaIsr" name="FormulaISR" label="Formula ISR" />
+    <column fieldName="FormulaExento" name="FormulaExento" label="Formula Exento" />
+    <column fieldName="FormulaImpresion" name="FormulaImpresion" label="Formula Impresion" />
+    <column fieldName="CuentaContable" name="CuentaContable" label="Cuenta Contable" />
+    <column fieldName="ConceptoSat" name="ConceptoSAT" label="Concepto SAT" />
+    <column fieldName="Notas" name="Notas" label="Notas" />
+    <column fieldName="OrdenCalculo" name="OrdenCalculo" label="Orden Calculo" />
+    <column fieldName="ImporteMinimo" name="ImporteMinimo" label="Importe Minimo" format="c" />
+    <column fieldName="ImporteMaximo" name="ImporteMaximo" label="Importe Maximo" format="c" />
+    <column fieldName="Texto" name="Texto" label="Texto" />
+    <column fieldName="Numero" name="Numero" label="Numero" />
+    <column fieldName="CreadoPor" name="CreadoPor" label="Creado Por" />
+    <column fieldName="ModificadoPor" name="ModificadoPor" label="Modificado Por" />
+    <column fieldName="CreadoEn" name="CreadoEn" label="Creado En" format="g" />
+    <column fieldName="ModificadoEn" name="ModificadoEn" label="Modificado En" format="g" />
+    <column fieldName="AcumulaPtu" name="AcumulaPTU" label="Acumula PTU" />
+    <column fieldName="GravaIsn" name="GravaISN" label="Grava ISN" />
+    <column fieldName="FormulaSql" name="FormulaSQL" label="Formula SQL" />
+    <column fieldName="FormulaIsrsql" name="FormulaISRSQL" label="Formula ISRSQL" />
+    <column fieldName="FormulaExentoSql" name="FormulaExentoSQL" label="Formula Exento SQL" />
+    <column fieldName="FormulaImpresionSql" name="FormulaImpresionSQL" label="Formula Impresion SQL" />
+    <column fieldName="CuentaContable2" name="CuentaContable2" label="Cuenta Contable2" />
+    <column fieldName="ReferenciaConcepto" name="ReferenciaConcepto" label="Referencia Concepto" />
+  </columns>
+</dataModel>

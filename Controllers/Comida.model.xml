@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Comida" alias="Comida" created="2016-05-31T07:17:51" modified="2016-05-31T07:37:22" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="Tipo" parentTableSchema="dbo" parentTableName="PrecioComida" x="295" y="20">
+      <foreignKeyColumn columnName="Tipo" parentColumnName="ID_PrecioComida" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column fieldName="IDComida" name="ID_Comida" label="ID Comida" />
+    <column fieldName="Platillo" name="Platillo" label="Platillo" />
+    <column fieldName="Descripcion" name="Descripcion" label="Descripcion" />
+    <column fieldName="Tipo" name="Tipo" label="Tipo" aliasColumnName="Tipo" aliasForeignKey="Tipo" />
+    <column name="Image" fieldName="Image" label="Image" />
+    <column name="ImageFileName" fieldName="ImageFileName" label="Image File Name" />
+    <column name="ImageContentType" fieldName="ImageContentType" label="Image Content Type" />
+    <column name="ImageLength" fieldName="ImageLength" label="Image Length" />
+    <column name="IDComida" fieldName="Idcomida" label="Idcomida" />
+    <column fieldName="Tipo1" name="Tipo" label="Tipo" foreignKey="Tipo" />
+  </columns>
+</dataModel>

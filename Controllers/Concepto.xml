@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Concepto" conflictDetection="overwriteChanges" label="Concepto" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Concepto"."Id_Concepto" "IDConcepto"
+	,"Concepto"."Alias" "Alias"
+	,"Concepto"."Activo" "Activo"
+	,"Concepto"."ID_TipoConcepto" "IDTipoconcepto"
+	,"TheID_TipoConcepto"."Descripcion" "TheidTipoconceptodescripcion"
+	,"Concepto"."Descripcion" "Descripcion"
+	,"Concepto"."ImprimirRecibo" "ImprimirRecibo"
+	,"Concepto"."ImprimirListado" "ImprimirListado"
+	,"Concepto"."Mensual" "Mensual"
+	,"Concepto"."Id_Filtro" "IDFiltro"
+	,"Concepto"."GravaIMSS" "GravaImss"
+	,"Concepto"."GravaISR" "GravaIsr"
+	,"Concepto"."Formula" "Formula"
+	,"Concepto"."FormulaISR" "FormulaIsr"
+	,"Concepto"."FormulaExento" "FormulaExento"
+	,"Concepto"."FormulaImpresion" "FormulaImpresion"
+	,"Concepto"."CuentaContable" "CuentaContable"
+	,"Concepto"."ConceptoSAT" "ConceptoSat"
+	,"Concepto"."Notas" "Notas"
+	,"Concepto"."OrdenCalculo" "OrdenCalculo"
+	,"Concepto"."ImporteMinimo" "ImporteMinimo"
+	,"Concepto"."ImporteMaximo" "ImporteMaximo"
+	,"Concepto"."Texto" "Texto"
+	,"Concepto"."Numero" "Numero"
+	,"Concepto"."CreadoPor" "CreadoPor"
+	,"Concepto"."ModificadoPor" "ModificadoPor"
+	,"Concepto"."CreadoEn" "CreadoEn"
+	,"Concepto"."ModificadoEn" "ModificadoEn"
+	,"Concepto"."AcumulaPTU" "AcumulaPtu"
+	,"Concepto"."GravaISN" "GravaIsn"
+	,"Concepto"."FormulaSQL" "FormulaSql"
+	,"Concepto"."FormulaISRSQL" "FormulaIsrsql"
+	,"Concepto"."FormulaExentoSQL" "FormulaExentoSql"
+	,"Concepto"."FormulaImpresionSQL" "FormulaImpresionSql"
+	,"Concepto"."CuentaContable2" "CuentaContable2"
+	,"Concepto"."ReferenciaConcepto" "ReferenciaConcepto"
+from "dbo"."Concepto" "Concepto"
+	left join "dbo"."TipoConcepto" "TheID_TipoConcepto" on "Concepto"."ID_TipoConcepto" = "TheID_TipoConcepto"."ID_TipoConcepto"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="IDConcepto" type="Int16" allowNulls="false" isPrimaryKey="true" default="CREATE DEFAULT Cero AS 0" label="Id Concepto" />
+    <field name="Alias" type="String" allowNulls="false" default="('')" label="Alias" length="20" showInSummary="true" />
+    <field name="Activo" type="Boolean" allowNulls="false" default="((1))" label="Activo" showInSummary="true" />
+    <field name="IDTipoconcepto" type="String" allowNulls="false" default="create default [StrVacio] as ''" label="ID Tipo Concepto" length="1" showInSummary="true">
+      <items style="Lookup" dataController="TipoConcepto" newDataView="createForm1" dataValueField="IDTipoconcepto" />
+    </field>
+    <field name="TheidTipoconceptodescripcion" type="String" readOnly="true" label="ID Tipo Concepto Descripcion" length="50" />
+    <field name="Descripcion" type="String" allowNulls="false" label="Descripcion" length="50" showInSummary="true" />
+    <field name="ImprimirRecibo" type="Boolean" allowNulls="false" default="((1))" label="Imprimir Recibo" showInSummary="true" />
+    <field name="ImprimirListado" type="Boolean" allowNulls="false" default="((1))" label="Imprimir Listado" />
+    <field name="Mensual" type="Boolean" allowNulls="false" default="((0))" label="Mensual" />
+    <field name="IDFiltro" type="String" default="create default [StrVacio] as ''" label="Id Filtro" length="8" />
+    <field name="GravaImss" type="Boolean" allowNulls="false" default="((0))" label="Grava IMSS" />
+    <field name="GravaIsr" type="Boolean" allowNulls="false" default="((0))" label="Grava ISR" />
+    <field name="Formula" type="String" default="create default [StrVacio] as ''" allowQBE="false" allowSorting="false" label="Formula" />
+    <field name="FormulaIsr" type="String" default="create default [StrVacio] as ''" allowQBE="false" allowSorting="false" label="Formula ISR" />
+    <field name="FormulaExento" type="String" default="create default [StrVacio] as ''" allowQBE="false" allowSorting="false" label="Formula Exento" />
+    <field name="FormulaImpresion" type="String" default="create default [StrVacio] as ''" allowQBE="false" allowSorting="false" label="Formula Impresion" />
+    <field name="CuentaContable" type="String" default="create default [StrVacio] as ''" label="Cuenta Contable" length="30" />
+    <field name="ConceptoSat" type="Int32" label="Concepto SAT" />
+    <field name="Notas" type="String" allowQBE="false" allowSorting="false" label="Notas" />
+    <field name="OrdenCalculo" type="Int16" label="Orden Calculo" />
+    <field name="ImporteMinimo" type="Decimal" dataFormatString="c" default="((0))" label="Importe Minimo" />
+    <field name="ImporteMaximo" type="Decimal" dataFormatString="c" default="((0))" label="Importe Maximo" />
+    <field name="Texto" type="String" label="Texto" length="50" />
+    <field name="Numero" type="Decimal" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Numero" />
+    <field name="CreadoPor" type="String" label="Creado Por" length="50" />
+    <field name="ModificadoPor" type="String" label="Modificado Por" length="50" />
+    <field name="CreadoEn" type="DateTime" dataFormatString="g" label="Creado En" />
+    <field name="ModificadoEn" type="DateTime" dataFormatString="g" label="Modificado En" />
+    <field name="AcumulaPtu" type="Boolean" label="Acumula PTU" />
+    <field name="GravaIsn" type="Boolean" label="Grava ISN" />
+    <field name="FormulaSql" type="String" allowQBE="false" allowSorting="false" label="Formula SQL" />
+    <field name="FormulaIsrsql" type="String" allowQBE="false" allowSorting="false" label="Formula ISRSQL" />
+    <field name="FormulaExentoSql" type="String" allowQBE="false" allowSorting="false" label="Formula Exento SQL" />
+    <field name="FormulaImpresionSql" type="String" allowQBE="false" allowSorting="false" label="Formula Impresion SQL" />
+    <field name="CuentaContable2" type="String" default="create default [StrVacio] as ''" label="Cuenta Contable2" length="30" />
+    <field name="ReferenciaConcepto" type="Int32" label="Referencia Concepto" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Concepto">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="IDConcepto" columns="15" />
+        <dataField fieldName="Alias" columns="20" />
+        <dataField fieldName="Activo" />
+        <dataField fieldName="IDTipoconcepto" aliasFieldName="TheidTipoconceptodescripcion" />
+        <dataField fieldName="Descripcion" columns="50" />
+        <dataField fieldName="ImprimirRecibo" />
+        <dataField fieldName="ImprimirListado" />
+        <dataField fieldName="Mensual" />
+        <dataField fieldName="IDFiltro" columns="8" />
+        <dataField fieldName="GravaImss" />
+        <dataField fieldName="GravaIsr" />
+        <dataField fieldName="Formula" rows="5" />
+        <dataField fieldName="FormulaIsr" rows="5" />
+        <dataField fieldName="FormulaExento" rows="5" />
+        <dataField fieldName="FormulaImpresion" rows="5" />
+        <dataField fieldName="CuentaContable" columns="30" />
+        <dataField fieldName="ConceptoSat" columns="15" />
+        <dataField fieldName="Notas" rows="5" />
+        <dataField fieldName="OrdenCalculo" columns="15" />
+        <dataField fieldName="ImporteMinimo" columns="15" />
+        <dataField fieldName="ImporteMaximo" columns="15" />
+        <dataField fieldName="Texto" columns="50" />
+        <dataField fieldName="Numero" columns="15" />
+        <dataField fieldName="CreadoPor" columns="50" />
+        <dataField fieldName="ModificadoPor" columns="50" />
+        <dataField fieldName="CreadoEn" columns="10" />
+        <dataField fieldName="ModificadoEn" columns="10" />
+        <dataField fieldName="AcumulaPtu" />
+        <dataField fieldName="GravaIsn" />
+        <dataField fieldName="FormulaSql" rows="5" />
+        <dataField fieldName="FormulaIsrsql" rows="5" />
+        <dataField fieldName="FormulaExentoSql" rows="5" />
+        <dataField fieldName="FormulaImpresionSql" rows="5" />
+        <dataField fieldName="CuentaContable2" columns="30" />
+        <dataField fieldName="ReferenciaConcepto" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Concepto">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Concepto" newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDConcepto" columns="15" />
+            <dataField fieldName="Alias" columns="20" />
+            <dataField fieldName="Activo" />
+            <dataField fieldName="IDTipoconcepto" aliasFieldName="TheidTipoconceptodescripcion" />
+            <dataField fieldName="Descripcion" columns="50" />
+            <dataField fieldName="ImprimirRecibo" />
+            <dataField fieldName="ImprimirListado" />
+            <dataField fieldName="Mensual" />
+            <dataField fieldName="IDFiltro" columns="8" />
+            <dataField fieldName="GravaImss" />
+            <dataField fieldName="GravaIsr" />
+            <dataField fieldName="Formula" rows="5" />
+            <dataField fieldName="FormulaIsr" rows="5" />
+            <dataField fieldName="FormulaExento" rows="5" />
+            <dataField fieldName="FormulaImpresion" rows="5" />
+            <dataField fieldName="CuentaContable" columns="30" />
+            <dataField fieldName="ConceptoSat" columns="15" />
+            <dataField fieldName="Notas" rows="5" />
+            <dataField fieldName="OrdenCalculo" columns="15" />
+            <dataField fieldName="ImporteMinimo" columns="15" />
+            <dataField fieldName="ImporteMaximo" columns="15" />
+            <dataField fieldName="Texto" columns="50" />
+            <dataField fieldName="Numero" columns="15" />
+            <dataField fieldName="CreadoPor" columns="50" />
+            <dataField fieldName="ModificadoPor" columns="50" />
+            <dataField fieldName="CreadoEn" columns="10" />
+            <dataField fieldName="ModificadoEn" columns="10" />
+            <dataField fieldName="AcumulaPtu" />
+            <dataField fieldName="GravaIsn" />
+            <dataField fieldName="FormulaSql" rows="5" />
+            <dataField fieldName="FormulaIsrsql" rows="5" />
+            <dataField fieldName="FormulaExentoSql" rows="5" />
+            <dataField fieldName="FormulaImpresionSql" rows="5" />
+            <dataField fieldName="CuentaContable2" columns="30" />
+            <dataField fieldName="ReferenciaConcepto" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Concepto">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Concepto" newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDConcepto" columns="15" />
+            <dataField fieldName="Alias" columns="20" />
+            <dataField fieldName="Activo" />
+            <dataField fieldName="IDTipoconcepto" aliasFieldName="TheidTipoconceptodescripcion" />
+            <dataField fieldName="Descripcion" columns="50" />
+            <dataField fieldName="ImprimirRecibo" />
+            <dataField fieldName="ImprimirListado" />
+            <dataField fieldName="Mensual" />
+            <dataField fieldName="IDFiltro" columns="8" />
+            <dataField fieldName="GravaImss" />
+            <dataField fieldName="GravaIsr" />
+            <dataField fieldName="Formula" rows="5" />
+            <dataField fieldName="FormulaIsr" rows="5" />
+            <dataField fieldName="FormulaExento" rows="5" />
+            <dataField fieldName="FormulaImpresion" rows="5" />
+            <dataField fieldName="CuentaContable" columns="30" />
+            <dataField fieldName="ConceptoSat" columns="15" />
+            <dataField fieldName="Notas" rows="5" />
+            <dataField fieldName="OrdenCalculo" columns="15" />
+            <dataField fieldName="ImporteMinimo" columns="15" />
+            <dataField fieldName="ImporteMaximo" columns="15" />
+            <dataField fieldName="Texto" columns="50" />
+            <dataField fieldName="Numero" columns="15" />
+            <dataField fieldName="CreadoPor" columns="50" />
+            <dataField fieldName="ModificadoPor" columns="50" />
+            <dataField fieldName="CreadoEn" columns="10" />
+            <dataField fieldName="ModificadoEn" columns="10" />
+            <dataField fieldName="AcumulaPtu" />
+            <dataField fieldName="GravaIsn" />
+            <dataField fieldName="FormulaSql" rows="5" />
+            <dataField fieldName="FormulaIsrsql" rows="5" />
+            <dataField fieldName="FormulaExentoSql" rows="5" />
+            <dataField fieldName="FormulaImpresionSql" rows="5" />
+            <dataField fieldName="CuentaContable2" columns="30" />
+            <dataField fieldName="ReferenciaConcepto" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+  </actions>
+</dataController>

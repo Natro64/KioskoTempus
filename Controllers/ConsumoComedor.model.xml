@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="ConsumoComedor" alias="ConsumoComedor" created="2016-05-30T11:00:40" modified="2016-05-31T09:56:10" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="TheID_Empleado" parentTableSchema="dbo" parentTableName="Empleado" x="343" y="20">
+      <foreignKeyColumn columnName="ID_Empleado" parentColumnName="ID_Empleado" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column fieldName="IDConsumocomedor" name="ID_ConsumoComedor" label="ID Consumo Comedor" />
+    <column fieldName="IDEmpleado" name="ID_Empleado" label="ID Empleado" aliasColumnName="NombreCompleto" aliasForeignKey="TheID_Empleado" />
+    <column fieldName="TheidEmpleadonombrecompleto" name="NombreCompleto" label="ID Empleado Nombre Completo" foreignKey="TheID_Empleado" />
+    <column fieldName="FechaConsumo" name="FechaConsumo" label="Fecha Consumo" />
+    <column fieldName="IDMenucomedor" name="ID_MenuComedor" label="ID Menu Comedor" />
+    <column fieldName="IDPrecioComida" name="Id_Precio_Comida" label="Id Precio Comida" />
+    <column fieldName="FechaCreacion" name="FechaCreacion" label="Fecha Creacion" format="g" />
+    <column name="ID_ComidaComedor" fieldName="IDComidacomedor" label="ID Comidacomedor" />
+    <column name="CreadoPor" fieldName="CreadoPor" label="Creado Por" />
+    <column name="IDMenuComedor" fieldName="IdmenuComedor" label="Idmenu Comedor" />
+    <column name="ID_PrecioComida" fieldName="IDPreciocomida" label="ID Preciocomida" />
+  </columns>
+</dataModel>

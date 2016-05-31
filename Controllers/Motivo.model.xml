@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Motivo" alias="Motivo" created="2016-05-26T16:27:21" modified="2016-05-26T16:27:23" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column fieldName="IDMotivo" name="ID_Motivo" label="ID Motivo" />
+    <column fieldName="Descripcion" name="Descripcion" label="Descripcion" />
+  </columns>
+</dataModel>

@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Prestamo" conflictDetection="overwriteChanges" label="Prestamo" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Prestamo"."Referencia" "Referencia"
+	,"Prestamo"."Id_TipoPrestamo" "IDTipoprestamo"
+	,"TheId_TipoPrestamo"."Descripcion" "TheidTipoprestamodescripcion"
+	,"Prestamo"."Id_Empleado" "IDEmpleado"
+	,"Id_Empleado"."NombreCompleto" "IDEmpleadonombrecompleto"
+	,"Prestamo"."Abonos" "Abonos"
+	,"Prestamo"."Cargos" "Cargos"
+	,"Prestamo"."FechaInicio" "FechaInicio"
+	,"Prestamo"."FormulaDescuento" "FormulaDescuento"
+	,"Prestamo"."Importe" "Importe"
+	,"Prestamo"."NoAbonos" "NoAbonos"
+	,"Prestamo"."SaldoInicial" "SaldoInicial"
+	,"Prestamo"."Estatus" "Estatus"
+	,"Prestamo"."Total" "Total"
+	,"Prestamo"."Saldo" "Saldo"
+	,"Prestamo"."CreadoPor" "CreadoPor"
+	,"Prestamo"."ModificadoPor" "ModificadoPor"
+	,"Prestamo"."CreadoEn" "CreadoEn"
+	,"Prestamo"."ModificadoEn" "ModificadoEn"
+	,"Prestamo"."id_Prestamo" "IDPrestamo"
+	,"Prestamo"."CuentaContable" "CuentaContable"
+	,"Prestamo"."Observaciones" "Observaciones"
+	,"Prestamo"."FormulaDescuentoSQL" "FormulaDescuentoSql"
+	,"Prestamo"."SaldarFiniquito" "SaldarFiniquito"
+from "dbo"."Prestamo" "Prestamo"
+	left join "dbo"."TipoPrestamo" "TheId_TipoPrestamo" on "Prestamo"."Id_TipoPrestamo" = "TheId_TipoPrestamo"."Id_TipoPrestamo"
+	left join "dbo"."Empleado" "Id_Empleado" on "Prestamo"."Id_Empleado" = "Id_Empleado"."ID_Empleado"
+]]></text>
+    </command>
+    <command id="id_PrestamoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="id_Prestamo" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Referencia" type="String" allowNulls="false" label="Referencia" length="10" showInSummary="true" />
+    <field name="IDTipoprestamo" type="String" allowNulls="false" label="Id Tipo Prestamo" length="3" showInSummary="true">
+      <items style="Lookup" dataController="TipoPrestamo" newDataView="createForm1" dataValueField="IDTipoprestamo" />
+    </field>
+    <field name="TheidTipoprestamodescripcion" type="String" readOnly="true" label="Tipo Prestamo" length="50" />
+    <field name="IDEmpleado" type="Int32" allowNulls="false" isPrimaryKey="true" label="Id Empleado" showInSummary="true">
+      <items style="Lookup" dataController="Empleado" newDataView="createForm1" dataValueField="IDEmpleado" dataView="LookUp" dataTextField="NombreCompleto" />
+    </field>
+    <field name="IDEmpleadonombrecompleto" type="String" label="Empleado" readOnly="true" length="92" />
+    <field name="Abonos" type="Decimal" allowNulls="false" dataFormatString="c" default="((0))" label="Abonos" showInSummary="true" />
+    <field name="Cargos" type="Decimal" allowNulls="false" dataFormatString="c" default="((0))" label="Cargos" showInSummary="true" />
+    <field name="FechaInicio" type="DateTime" allowNulls="false" label="Fecha Inicio" />
+    <field name="FormulaDescuento" type="String" allowQBE="false" allowSorting="false" label="Formula Descuento" length="4000" />
+    <field name="Importe" type="Decimal" allowNulls="false" dataFormatString="c" default="((0))" label="Importe" />
+    <field name="NoAbonos" type="Int32" allowNulls="false" label="No Abonos" />
+    <field name="SaldoInicial" type="Decimal" allowNulls="false" dataFormatString="c" default="((0))" label="Saldo Inicial" />
+    <field name="Estatus" type="Int16" allowNulls="false" default="((0))" label="Estatus" />
+    <field name="Total" type="Decimal" allowNulls="false" dataFormatString="c" default="((0))" label="Total" />
+    <field name="Saldo" type="Decimal" allowNulls="false" dataFormatString="c" default="((0))" label="Saldo" />
+    <field name="CreadoPor" type="String" label="Creado Por" length="50" />
+    <field name="ModificadoPor" type="String" label="Modificado Por" length="50" />
+    <field name="CreadoEn" type="DateTime" dataFormatString="g" label="Creado En" />
+    <field name="ModificadoEn" type="DateTime" dataFormatString="g" label="Modificado En" />
+    <field name="IDPrestamo" type="Int32" allowNulls="false" isPrimaryKey="true" label="id Prestamo" readOnly="true" />
+    <field name="CuentaContable" type="String" label="Cuenta Contable" length="30" />
+    <field name="Observaciones" type="String" label="Observaciones" length="100" />
+    <field name="FormulaDescuentoSql" type="String" allowQBE="false" allowSorting="false" label="Formula Descuento SQL" length="8000" />
+    <field name="SaldarFiniquito" type="String" label="Saldar Finiquito" length="1" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Prestamo" filter="RFC = @BusinessRules_UserName" sortExpression="FechaInicio desc">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Referencia" columns="10" />
+        <dataField fieldName="IDTipoprestamo" aliasFieldName="TheidTipoprestamodescripcion" />
+        <dataField fieldName="IDEmpleado" aliasFieldName="IDEmpleadonombrecompleto" />
+        <dataField fieldName="Abonos" columns="15" />
+        <dataField fieldName="Cargos" columns="15" />
+        <dataField fieldName="FechaInicio" columns="10" />
+        <dataField fieldName="FormulaDescuento" rows="5" />
+        <dataField fieldName="Importe" columns="15" />
+        <dataField fieldName="NoAbonos" columns="15" />
+        <dataField fieldName="SaldoInicial" columns="15" />
+        <dataField fieldName="Estatus" columns="15" />
+        <dataField fieldName="Total" columns="15" />
+        <dataField fieldName="Saldo" columns="15" />
+        <dataField fieldName="CreadoPor" columns="50" />
+        <dataField fieldName="ModificadoPor" columns="50" />
+        <dataField fieldName="CreadoEn" columns="10" />
+        <dataField fieldName="ModificadoEn" columns="10" />
+        <dataField fieldName="CuentaContable" columns="30" />
+        <dataField fieldName="Observaciones" />
+        <dataField fieldName="FormulaDescuentoSql" rows="5" />
+        <dataField fieldName="SaldarFiniquito" columns="1" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Prestamo">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Prestamo" newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Referencia" columns="10" />
+            <dataField fieldName="IDTipoprestamo" aliasFieldName="TheidTipoprestamodescripcion" />
+            <dataField fieldName="IDEmpleado" aliasFieldName="IDEmpleadonombrecompleto" />
+            <dataField fieldName="Abonos" columns="15" />
+            <dataField fieldName="Cargos" columns="15" />
+            <dataField fieldName="FechaInicio" columns="10" />
+            <dataField fieldName="FormulaDescuento" rows="5" />
+            <dataField fieldName="Importe" columns="15" />
+            <dataField fieldName="NoAbonos" columns="15" />
+            <dataField fieldName="SaldoInicial" columns="15" />
+            <dataField fieldName="Estatus" columns="15" />
+            <dataField fieldName="Total" columns="15" />
+            <dataField fieldName="Saldo" columns="15" />
+            <dataField fieldName="CreadoPor" columns="50" />
+            <dataField fieldName="ModificadoPor" columns="50" />
+            <dataField fieldName="CreadoEn" columns="10" />
+            <dataField fieldName="ModificadoEn" columns="10" />
+            <dataField fieldName="CuentaContable" columns="30" />
+            <dataField fieldName="Observaciones" />
+            <dataField fieldName="FormulaDescuentoSql" rows="5" />
+            <dataField fieldName="SaldarFiniquito" columns="1" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Prestamo">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Prestamo" newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Referencia" columns="10" />
+            <dataField fieldName="IDTipoprestamo" aliasFieldName="TheidTipoprestamodescripcion" />
+            <dataField fieldName="IDEmpleado" aliasFieldName="IDEmpleadonombrecompleto" />
+            <dataField fieldName="Abonos" columns="15" />
+            <dataField fieldName="Cargos" columns="15" />
+            <dataField fieldName="FechaInicio" columns="10" />
+            <dataField fieldName="FormulaDescuento" rows="5" />
+            <dataField fieldName="Importe" columns="15" />
+            <dataField fieldName="NoAbonos" columns="15" />
+            <dataField fieldName="SaldoInicial" columns="15" />
+            <dataField fieldName="Estatus" columns="15" />
+            <dataField fieldName="Total" columns="15" />
+            <dataField fieldName="Saldo" columns="15" />
+            <dataField fieldName="CuentaContable" columns="30" />
+            <dataField fieldName="Observaciones" />
+            <dataField fieldName="FormulaDescuentoSql" rows="5" />
+            <dataField fieldName="SaldarFiniquito" columns="1" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" roles="None" />
+      <action id="a3" commandName="Delete" roles="None" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" roles="None" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" roles="None" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" roles="None" />
+      <action id="a2" commandName="Delete" roles="None" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" roles="None" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" roles="None" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" roles="None" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="Update" type="Sql" phase="After" name="Prestamo_Edit"><![CDATA[update Prestamo
+set ModificadoPor = @BusinessRules_UserName,
+    ModificadoEn = GETDATE()
+where id_Prestamo = @id_Prestamo]]></rule>
+  </businessRules>
+</dataController>

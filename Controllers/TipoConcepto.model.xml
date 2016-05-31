@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="TipoConcepto" alias="TipoConcepto" created="2016-05-17T07:06:57" modified="2016-05-17T07:06:59" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column fieldName="IDTipoconcepto" name="ID_TipoConcepto" label="ID Tipo Concepto" />
+    <column fieldName="Descripcion" name="Descripcion" label="Descripcion" />
+    <column fieldName="OrdenCalculo" name="OrdenCalculo" label="Orden Calculo" />
+    <column fieldName="GeneraAcumulado" name="GeneraAcumulado" label="Genera Acumulado" />
+    <column fieldName="TipoSat" name="TipoSAT" label="Tipo SAT" />
+  </columns>
+</dataModel>

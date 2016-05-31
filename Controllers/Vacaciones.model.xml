@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Vacaciones" alias="Vacaciones" created="2016-05-17T07:06:29" modified="2016-05-17T07:06:31" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="Id_Empleado" parentTableSchema="dbo" parentTableName="Empleado" x="338" y="20">
+      <foreignKeyColumn columnName="Id_Empleado" parentColumnName="ID_Empleado" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column fieldName="IDVacaciones" name="Id_Vacaciones" label="Id Vacaciones" />
+    <column fieldName="IDEmpleado" name="Id_Empleado" label="Id Empleado" aliasColumnName="NombreCompleto" aliasForeignKey="Id_Empleado" />
+    <column fieldName="IDEmpleadonombrecompleto" name="NombreCompleto" label="Id Empleado Nombre Completo" foreignKey="Id_Empleado" />
+    <column fieldName="Fecha" name="Fecha" label="Fecha" format="g" />
+    <column fieldName="TipoVacacion" name="TipoVacacion" label="Tipo Vacacion" />
+    <column fieldName="Anio" name="Anio" label="Anio" />
+    <column fieldName="FechaFin" name="FechaFin" label="Fecha Fin" format="g" />
+    <column fieldName="Observaciones" name="Observaciones" label="Observaciones" />
+    <column fieldName="DerechoPago" name="DerechoPago" label="Derecho Pago" />
+    <column fieldName="DiasPago" name="DiasPago" label="Dias Pago" />
+    <column fieldName="SaldoPago" name="SaldoPago" label="Saldo Pago" />
+    <column fieldName="DerechoGozo" name="DerechoGozo" label="Derecho Gozo" />
+    <column fieldName="DiasGoce" name="DiasGoce" label="Dias Goce" />
+    <column fieldName="SaldoGoce" name="SaldoGoce" label="Saldo Goce" />
+    <column fieldName="SalDiario" name="SalDiario" label="Sal Diario" />
+    <column fieldName="DerechoPrima" name="DerechoPrima" label="Derecho Prima" />
+    <column fieldName="DiasPrima" name="DiasPrima" label="Dias Prima" />
+    <column fieldName="SaldoPrima" name="SaldoPrima" label="Saldo Prima" />
+    <column fieldName="IDPrestaciones" name="Id_Prestaciones" label="Id Prestaciones" />
+    <column fieldName="IDPeriodo" name="Id_Periodo" label="Id Periodo" />
+    <column fieldName="MovGlobal" name="MovGlobal" label="Mov Global" />
+    <column fieldName="FechaCaptura" name="FechaCaptura" label="Fecha Captura" format="g" />
+    <column fieldName="CreadoPor" name="CreadoPor" label="Creado Por" />
+    <column fieldName="ModificadoPor" name="ModificadoPor" label="Modificado Por" />
+    <column fieldName="CreadoEn" name="CreadoEn" label="Creado En" format="g" />
+    <column fieldName="ModificadoEn" name="ModificadoEn" label="Modificado En" format="g" />
+  </columns>
+</dataModel>

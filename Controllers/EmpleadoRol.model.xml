@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="EmpleadoRol" alias="EmpleadoRol" created="2016-05-26T11:02:07" modified="2016-05-26T11:02:09" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="TheID_Empleado" parentTableSchema="dbo" parentTableName="Empleado" x="272" y="20">
+      <foreignKeyColumn columnName="ID_Empleado" parentColumnName="ID_Empleado" />
+    </foreignKey>
+    <foreignKey id="TheID_Rol" parentTableSchema="dbo" parentTableName="Rol" x="272" y="779">
+      <foreignKeyColumn columnName="ID_Rol" parentColumnName="ID_Rol" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column fieldName="IDEmpleado" name="ID_Empleado" label="ID Empleado" aliasColumnName="NombreCompleto" aliasForeignKey="TheID_Empleado" />
+    <column fieldName="TheidEmpleadonombrecompleto" name="NombreCompleto" label="ID Empleado Nombre Completo" foreignKey="TheID_Empleado" />
+    <column fieldName="IDRol" name="ID_Rol" label="ID Rol" aliasColumnName="Descripcion" aliasForeignKey="TheID_Rol" />
+    <column fieldName="TheidRoldescripcion" name="Descripcion" label="ID Rol Descripcion" foreignKey="TheID_Rol" />
+  </columns>
+</dataModel>

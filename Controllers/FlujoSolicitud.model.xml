@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="FlujoSolicitud" alias="FlujoSolicitud" created="2016-05-17T07:08:02" modified="2016-05-26T16:24:20" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="ID_FlujoSolicitud" parentTableSchema="dbo" parentTableName="Solicitudes" x="338" y="20">
+      <foreignKeyColumn columnName="ID_FlujoSolicitud" parentColumnName="ID_Solicitud" />
+    </foreignKey>
+    <foreignKey id="ID_FlujoSolicitudID_Empleado" parentTableSchema="dbo" parentTableName="Empleado" baseForeignKey="ID_FlujoSolicitud" x="642" y="20">
+      <foreignKeyColumn columnName="ID_Empleado" parentColumnName="ID_Empleado" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column fieldName="IDFlujosolicitud" name="ID_FlujoSolicitud" label="ID Flujo Solicitud" aliasColumnName="Notas" aliasForeignKey="ID_FlujoSolicitud" />
+    <column fieldName="IDFlujosolicitudnotas" name="Notas" label="ID Flujo Solicitud Notas" foreignKey="ID_FlujoSolicitud" />
+    <column fieldName="IDFlujosolicitudidEmpleadonombrecompleto" name="NombreCompleto" label="ID Flujo Solicitud ID Empleado Nombre Completo" foreignKey="ID_FlujoSolicitudID_Empleado" />
+    <column fieldName="Fecha" name="Fecha" label="Fecha" />
+    <column fieldName="IDEstatus" name="Id_Estatus" label="Id Estatus" />
+    <column fieldName="Observaciones" name="Observaciones" label="Observaciones" />
+    <column fieldName="CreadoPor" name="CreadoPor" label="Creado Por" />
+  </columns>
+</dataModel>

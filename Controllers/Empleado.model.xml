@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Empleado" alias="Empleado" created="2016-05-17T07:06:44" modified="2016-05-17T07:06:47" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column fieldName="IDEmpleado" name="ID_Empleado" label="ID Empleado" />
+    <column fieldName="NombreCompleto" name="NombreCompleto" label="Nombre Completo" />
+    <column fieldName="IDOrganizacion" name="ID_Organizacion" label="ID Organizacion" />
+    <column fieldName="Estatus" name="Estatus" label="Estatus" />
+    <column fieldName="ApellidoPaterno" name="ApellidoPaterno" label="Apellido Paterno" />
+    <column fieldName="ApellidoMaterno" name="ApellidoMaterno" label="Apellido Materno" />
+    <column fieldName="Nombre" name="Nombre" label="Nombre" />
+    <column fieldName="Rfc" name="RFC" label="Rfc" />
+    <column fieldName="NoImss" name="NoIMSS" label="No IMSS" />
+    <column fieldName="ClinicaImss" name="ClinicaIMSS" label="Clinica IMSS" />
+    <column fieldName="Curp" name="CURP" label="Curp" />
+    <column fieldName="Sexo" name="Sexo" label="Sexo" />
+    <column fieldName="IDEstadocivil" name="ID_EstadoCivil" label="ID Estado Civil" />
+    <column fieldName="CuentaBanco" name="CuentaBanco" label="Cuenta Banco" />
+    <column fieldName="CuentaVales" name="CuentaVales" label="Cuenta Vales" />
+    <column fieldName="CuentaGasolina" name="CuentaGasolina" label="Cuenta Gasolina" />
+    <column fieldName="EMail" name="eMail" label="e Mail" />
+    <column fieldName="Titulo" name="Titulo" label="Titulo" />
+    <column fieldName="Cp" name="CP" label="Cp" />
+    <column fieldName="Calle" name="Calle" label="Calle" />
+    <column fieldName="NoExterior" name="NoExterior" label="No Exterior" />
+    <column fieldName="NoInterior" name="NoInterior" label="No Interior" />
+    <column fieldName="Colonia" name="Colonia" label="Colonia" />
+    <column fieldName="IDMunicipio" name="ID_Municipio" label="ID Municipio" />
+    <column fieldName="IDEstado" name="ID_Estado" label="ID Estado" />
+    <column fieldName="Pais" name="Pais" label="Pais" />
+    <column fieldName="Telefono" name="Telefono" label="Telefono" />
+    <column fieldName="ChecaTarjeta" name="ChecaTarjeta" label="Checa Tarjeta" />
+    <column fieldName="LetraGafete" name="LetraGafete" label="Letra Gafete" />
+    <column fieldName="Gafete" name="Gafete" label="Gafete" />
+    <column fieldName="IDEscolaridad" name="ID_Escolaridad" label="ID Escolaridad" />
+    <column fieldName="IDTiponomina" name="ID_TipoNomina" label="ID Tipo Nomina" />
+    <column fieldName="IDTipopago" name="ID_TipoPago" label="ID Tipo Pago" />
+    <column fieldName="FechaResidencia" name="FechaResidencia" label="Fecha Residencia" format="g" />
+    <column fieldName="FechaNacimiento" name="FechaNacimiento" label="Fecha Nacimiento" format="g" />
+    <column fieldName="FechaRevisionSalario" name="FechaRevisionSalario" label="Fecha Revision Salario" format="g" />
+    <column fieldName="Multilingue" name="Multilingue" label="Multilingue" />
+    <column fieldName="Pasaporte" name="Pasaporte" label="Pasaporte" />
+    <column fieldName="Idiomas" name="Idiomas" label="Idiomas" />
+    <column fieldName="LugarMatrimonio" name="LugarMatrimonio" label="Lugar Matrimonio" />
+    <column fieldName="LugarNacimiento" name="LugarNacimiento" label="Lugar Nacimiento" />
+    <column fieldName="IDTransporte" name="ID_Transporte" label="ID Transporte" />
+    <column fieldName="Nacionalidad" name="Nacionalidad" label="Nacionalidad" />
+    <column fieldName="IDTipovivienda" name="ID_TipoVivienda" label="ID Tipo Vivienda" />
+    <column fieldName="IDEstadonacimiento" name="ID_EstadoNacimiento" label="ID Estado Nacimiento" />
+    <column fieldName="IDMunicipionacimiento" name="ID_MunicipioNacimiento" label="ID Municipio Nacimiento" />
+    <column fieldName="CursosAnteriores" name="CursosAnteriores" label="Cursos Anteriores" />
+    <column fieldName="PuestosAnteriores" name="PuestosAnteriores" label="Puestos Anteriores" />
+    <column fieldName="EstudiaActualmente" name="EstudiaActualmente" label="Estudia Actualmente" />
+    <column fieldName="HorarioEstudiante" name="HorarioEstudiante" label="Horario Estudiante" />
+    <column fieldName="ZonaEconomica" name="ZonaEconomica" label="Zona Economica" />
+    <column fieldName="Foto" name="Foto" label="Foto" />
+    <column fieldName="Firma" name="Firma" label="Firma" />
+    <column fieldName="IDPlantilla" name="ID_Plantilla" label="ID Plantilla" />
+    <column fieldName="IDJefedirecto" name="ID_JefeDirecto" label="ID Jefe Directo" />
+    <column fieldName="FechaIngreso" name="FechaIngreso" label="Fecha Ingreso" format="g" />
+    <column fieldName="FechaBaja" name="FechaBaja" label="Fecha Baja" format="g" />
+    <column fieldName="FechaPrestaciones" name="FechaPrestaciones" label="Fecha Prestaciones" format="g" />
+    <column fieldName="FechaSigEvaluacion" name="FechaSigEvaluacion" label="Fecha Sig Evaluacion" format="g" />
+    <column fieldName="FechaInicioContrato" name="FechaInicioContrato" label="Fecha Inicio Contrato" format="g" />
+    <column fieldName="FechaVencContra" name="FechaVencContra" label="Fecha Venc Contra" format="g" />
+    <column fieldName="IDPatron" name="ID_Patron" label="ID Patron" />
+    <column fieldName="IDTabulador" name="ID_Tabulador" label="ID Tabulador" />
+    <column fieldName="IDPrestaciones" name="ID_Prestaciones" label="ID Prestaciones" />
+    <column fieldName="SalarioTabulador" name="SalarioTabulador" label="Salario Tabulador" />
+    <column fieldName="SalarioIntegradoAnterior" name="SalarioIntegradoAnterior" label="Salario Integrado Anterior" />
+    <column fieldName="SalarioDiarioAnterior" name="SalarioDiarioAnterior" label="Salario Diario Anterior" />
+    <column fieldName="SalarioDiario" name="SalarioDiario" label="Salario Diario" />
+    <column fieldName="FactorIntegracion" name="FactorIntegracion" label="Factor Integracion" />
+    <column fieldName="SalarioVariables" name="SalarioVariables" label="Salario Variables" />
+    <column fieldName="IDPuesto" name="ID_Puesto" label="ID Puesto" />
+    <column fieldName="IDTurno" name="ID_Turno" label="ID Turno" />
+    <column fieldName="IDDepartamento" name="ID_Departamento" label="ID Departamento" />
+    <column fieldName="IDCentrocosto" name="ID_CentroCosto" label="ID Centro Costo" />
+    <column fieldName="IDClasificacion" name="ID_Clasificacion" label="ID Clasificacion" />
+    <column fieldName="IDSupervisor" name="ID_Supervisor" label="ID Supervisor" />
+    <column fieldName="IDContrato" name="ID_Contrato" label="ID Contrato" />
+    <column fieldName="IDGrupo01" name="ID_Grupo01" label="ID Grupo01" />
+    <column fieldName="IDGrupo02" name="ID_Grupo02" label="ID Grupo02" />
+    <column fieldName="IDGrupo03" name="ID_Grupo03" label="ID Grupo03" />
+    <column fieldName="IDGrupo04" name="ID_Grupo04" label="ID Grupo04" />
+    <column fieldName="IDGrupo05" name="ID_Grupo05" label="ID Grupo05" />
+    <column fieldName="IDTablaad01" name="ID_TablaAd01" label="ID Tabla Ad01" />
+    <column fieldName="IDTablaad02" name="ID_TablaAd02" label="ID Tabla Ad02" />
+    <column fieldName="IDTablaad03" name="ID_TablaAd03" label="ID Tabla Ad03" />
+    <column fieldName="IDTablaad04" name="ID_TablaAd04" label="ID Tabla Ad04" />
+    <column fieldName="IDTablaad05" name="ID_TablaAd05" label="ID Tabla Ad05" />
+    <column fieldName="IDTablaad06" name="ID_TablaAd06" label="ID Tabla Ad06" />
+    <column fieldName="IDTablaad07" name="ID_TablaAd07" label="ID Tabla Ad07" />
+    <column fieldName="IDTablaad08" name="ID_TablaAd08" label="ID Tabla Ad08" />
+    <column fieldName="IDTablaad09" name="ID_TablaAd09" label="ID Tabla Ad09" />
+    <column fieldName="IDTablaad10" name="ID_TablaAd10" label="ID Tabla Ad10" />
+    <column fieldName="IDTablaad11" name="ID_TablaAd11" label="ID Tabla Ad11" />
+    <column fieldName="IDTablaad12" name="ID_TablaAd12" label="ID Tabla Ad12" />
+    <column fieldName="IDTablaad13" name="ID_TablaAd13" label="ID Tabla Ad13" />
+    <column fieldName="IDTablaad14" name="ID_TablaAd14" label="ID Tabla Ad14" />
+    <column fieldName="IDTablaad15" name="ID_TablaAd15" label="ID Tabla Ad15" />
+    <column fieldName="Logico01" name="Logico01" label="Logico01" />
+    <column fieldName="Logico02" name="Logico02" label="Logico02" />
+    <column fieldName="Logico03" name="Logico03" label="Logico03" />
+    <column fieldName="Logico04" name="Logico04" label="Logico04" />
+    <column fieldName="Logico05" name="Logico05" label="Logico05" />
+    <column fieldName="Logico06" name="Logico06" label="Logico06" />
+    <column fieldName="Logico07" name="Logico07" label="Logico07" />
+    <column fieldName="Logico08" name="Logico08" label="Logico08" />
+    <column fieldName="Logico09" name="Logico09" label="Logico09" />
+    <column fieldName="Logico10" name="Logico10" label="Logico10" />
+    <column fieldName="Logico11" name="Logico11" label="Logico11" />
+    <column fieldName="Logico12" name="Logico12" label="Logico12" />
+    <column fieldName="Logico13" name="Logico13" label="Logico13" />
+    <column fieldName="Logico14" name="Logico14" label="Logico14" />
+    <column fieldName="Logico15" name="Logico15" label="Logico15" />
+    <column fieldName="Logico16" name="Logico16" label="Logico16" />
+    <column fieldName="Logico17" name="Logico17" label="Logico17" />
+    <column fieldName="Logico18" name="Logico18" label="Logico18" />
+    <column fieldName="Logico19" name="Logico19" label="Logico19" />
+    <column fieldName="Logico20" name="Logico20" label="Logico20" />
+    <column fieldName="Logico21" name="Logico21" label="Logico21" />
+    <column fieldName="Logico22" name="Logico22" label="Logico22" />
+    <column fieldName="Logico23" name="Logico23" label="Logico23" />
+    <column fieldName="Logico24" name="Logico24" label="Logico24" />
+    <column fieldName="Logico25" name="Logico25" label="Logico25" />
+    <column fieldName="Numerico01" name="Numerico01" label="Numerico01" />
+    <column fieldName="Numerico02" name="Numerico02" label="Numerico02" />
+    <column fieldName="Numerico03" name="Numerico03" label="Numerico03" />
+    <column fieldName="Numerico04" name="Numerico04" label="Numerico04" />
+    <column fieldName="Numerico05" name="Numerico05" label="Numerico05" />
+    <column fieldName="Numerico06" name="Numerico06" label="Numerico06" />
+    <column fieldName="Numerico07" name="Numerico07" label="Numerico07" />
+    <column fieldName="Numerico08" name="Numerico08" label="Numerico08" />
+    <column fieldName="Numerico09" name="Numerico09" label="Numerico09" />
+    <column fieldName="Numerico10" name="Numerico10" label="Numerico10" />
+    <column fieldName="Fecha01" name="Fecha01" label="Fecha01" format="g" />
+    <column fieldName="Fecha02" name="Fecha02" label="Fecha02" format="g" />
+    <column fieldName="Fecha03" name="Fecha03" label="Fecha03" format="g" />
+    <column fieldName="Fecha04" name="Fecha04" label="Fecha04" format="g" />
+    <column fieldName="Fecha05" name="Fecha05" label="Fecha05" format="g" />
+    <column fieldName="Fecha06" name="Fecha06" label="Fecha06" format="g" />
+    <column fieldName="Fecha07" name="Fecha07" label="Fecha07" format="g" />
+    <column fieldName="Fecha08" name="Fecha08" label="Fecha08" format="g" />
+    <column fieldName="Fecha09" name="Fecha09" label="Fecha09" format="g" />
+    <column fieldName="Fecha10" name="Fecha10" label="Fecha10" format="g" />
+    <column fieldName="Texto01" name="Texto01" label="Texto01" />
+    <column fieldName="Texto02" name="Texto02" label="Texto02" />
+    <column fieldName="Texto03" name="Texto03" label="Texto03" />
+    <column fieldName="Texto04" name="Texto04" label="Texto04" />
+    <column fieldName="Texto05" name="Texto05" label="Texto05" />
+    <column fieldName="Texto06" name="Texto06" label="Texto06" />
+    <column fieldName="Texto07" name="Texto07" label="Texto07" />
+    <column fieldName="Texto08" name="Texto08" label="Texto08" />
+    <column fieldName="Texto09" name="Texto09" label="Texto09" />
+    <column fieldName="Texto10" name="Texto10" label="Texto10" />
+    <column fieldName="Texto11" name="Texto11" label="Texto11" />
+    <column fieldName="Texto12" name="Texto12" label="Texto12" />
+    <column fieldName="Texto13" name="Texto13" label="Texto13" />
+    <column fieldName="Texto14" name="Texto14" label="Texto14" />
+    <column fieldName="Texto15" name="Texto15" label="Texto15" />
+    <column fieldName="Texto16" name="Texto16" label="Texto16" />
+    <column fieldName="Texto17" name="Texto17" label="Texto17" />
+    <column fieldName="Texto18" name="Texto18" label="Texto18" />
+    <column fieldName="Texto19" name="Texto19" label="Texto19" />
+    <column fieldName="Texto20" name="Texto20" label="Texto20" />
+    <column fieldName="Texto21" name="Texto21" label="Texto21" />
+    <column fieldName="Texto22" name="Texto22" label="Texto22" />
+    <column fieldName="Texto23" name="Texto23" label="Texto23" />
+    <column fieldName="Texto24" name="Texto24" label="Texto24" />
+    <column fieldName="Texto25" name="Texto25" label="Texto25" />
+    <column fieldName="PasswordPortal" name="PasswordPortal" label="Password Portal" />
+    <column fieldName="CreadoPor" name="CreadoPor" label="Creado Por" />
+    <column fieldName="ModificadoPor" name="ModificadoPor" label="Modificado Por" />
+    <column fieldName="CreadoEn" name="CreadoEn" label="Creado En" format="g" />
+    <column fieldName="ModificadoEn" name="ModificadoEn" label="Modificado En" format="g" />
+    <column fieldName="IDRuta" name="Id_Ruta" label="Id Ruta" />
+    <column fieldName="IDDelegacion" name="Id_Delegacion" label="Id Delegacion" />
+    <column fieldName="SalarioPreIntegrado" name="SalarioPreIntegrado" label="Salario Pre Integrado" />
+    <column fieldName="SalarioTope" name="SalarioTope" label="Salario Tope" />
+    <column fieldName="EstatusDescripcion" name="EstatusDescripcion" label="Estatus Descripcion" />
+    <column fieldName="Discapacidad" name="Discapacidad" label="Discapacidad" />
+    <column fieldName="TipoDiscapacidad" name="TipoDiscapacidad" label="Tipo Discapacidad" />
+    <column fieldName="Institucion" name="Institucion" label="Institucion" />
+    <column fieldName="TipoInstitucion" name="TipoInstitucion" label="Tipo Institucion" />
+    <column fieldName="CarreraTerminada" name="CarreraTerminada" label="Carrera Terminada" />
+    <column fieldName="TipoDocProb" name="TipoDocProb" label="Tipo Doc Prob" />
+    <column fieldName="AnioEmision" name="AnioEmision" label="Anio Emision" />
+    <column fieldName="SalarioPercepcionesFijas" name="SalarioPercepcionesFijas" label="Salario Percepciones Fijas" />
+    <column fieldName="SalarioIntegrado" name="SalarioIntegrado" label="Salario Integrado" />
+    <column fieldName="CuentaContable" name="CuentaContable" label="Cuenta Contable" />
+    <column fieldName="CuentaContable2" name="CuentaContable2" label="Cuenta Contable2" />
+    <column fieldName="UsID" name="US_Id" label="US Id" />
+  </columns>
+</dataModel>

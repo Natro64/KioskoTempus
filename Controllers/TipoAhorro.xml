@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="TipoAhorro" conflictDetection="overwriteChanges" label="Tipo Ahorro" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"TipoAhorro"."Id_TipoAhorro" "IDTipoahorro"
+	,"TipoAhorro"."Descripcion" "Descripcion"
+	,"TipoAhorro"."DescripcionBilingue" "DescripcionBilingue"
+	,"TipoAhorro"."Numero" "Numero"
+	,"TipoAhorro"."Texto" "Texto"
+	,"TipoAhorro"."ID_Concepto" "IDConcepto"
+	,"ID_Concepto"."Alias" "IDConceptoalias"
+	,"ID_ConceptoID_TipoConcepto"."Descripcion" "IDConceptoidTipoconceptodescripcion"
+	,"TipoAhorro"."ID_Concepto2" "IDConcepto2"
+	,"ID_Concepto2"."Alias" "IDConcepto2alias"
+	,"ID_Concepto2ID_TipoConcepto"."Descripcion" "IDConcepto2idTipoconceptodescripcion"
+	,"TipoAhorro"."SaldarFiniquito" "SaldarFiniquito"
+	,"TipoAhorro"."AutoAlta" "AutoAlta"
+	,"TipoAhorro"."CreadoPor" "CreadoPor"
+	,"TipoAhorro"."ModificadoPor" "ModificadoPor"
+	,"TipoAhorro"."CreadoEn" "CreadoEn"
+	,"TipoAhorro"."ModificadoEn" "ModificadoEn"
+from "dbo"."TipoAhorro" "TipoAhorro"
+	left join "dbo"."Concepto" "ID_Concepto" on "TipoAhorro"."ID_Concepto" = "ID_Concepto"."Id_Concepto"
+	left join "dbo"."TipoConcepto" "ID_ConceptoID_TipoConcepto" on "ID_Concepto"."ID_TipoConcepto" = "ID_ConceptoID_TipoConcepto"."ID_TipoConcepto"
+	left join "dbo"."Concepto" "ID_Concepto2" on "TipoAhorro"."ID_Concepto2" = "ID_Concepto2"."Id_Concepto"
+	left join "dbo"."TipoConcepto" "ID_Concepto2ID_TipoConcepto" on "ID_Concepto2"."ID_TipoConcepto" = "ID_Concepto2ID_TipoConcepto"."ID_TipoConcepto"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="IDTipoahorro" type="String" allowNulls="false" isPrimaryKey="true" label="Id Tipo Ahorro" length="1" showInSummary="true" />
+    <field name="Descripcion" type="String" allowNulls="false" label="Descripcion" length="50" showInSummary="true" />
+    <field name="DescripcionBilingue" type="String" label="Descripcion Bilingue" length="50" showInSummary="true" />
+    <field name="Numero" type="Decimal" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Numero" showInSummary="true" />
+    <field name="Texto" type="String" label="Texto" length="50" showInSummary="true" />
+    <field name="IDConcepto" type="Int16" label="ID Concepto">
+      <items style="Lookup" dataController="Concepto" newDataView="createForm1" dataValueField="IDConcepto" />
+    </field>
+    <field name="IDConceptoalias" type="String" readOnly="true" label="ID Concepto Alias" length="20" />
+    <field name="IDConceptoidTipoconceptodescripcion" type="String" readOnly="true" label="ID Concepto ID Tipo Concepto Descripcion" length="50" />
+    <field name="IDConcepto2" type="Int16" label="ID Concepto2">
+      <items style="Lookup" dataController="Concepto" newDataView="createForm1" dataValueField="IDConcepto" />
+    </field>
+    <field name="IDConcepto2alias" type="String" readOnly="true" label="ID Concepto2 Alias" length="20" />
+    <field name="IDConcepto2idTipoconceptodescripcion" type="String" readOnly="true" label="ID Concepto2 ID Tipo Concepto Descripcion" length="50" />
+    <field name="SaldarFiniquito" type="Int16" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Saldar Finiquito" />
+    <field name="AutoAlta" type="Int16" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Auto Alta" />
+    <field name="CreadoPor" type="String" label="Creado Por" length="50" />
+    <field name="ModificadoPor" type="String" label="Modificado Por" length="50" />
+    <field name="CreadoEn" type="DateTime" dataFormatString="g" label="Creado En" />
+    <field name="ModificadoEn" type="DateTime" dataFormatString="g" label="Modificado En" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Tipo Ahorro">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="IDTipoahorro" columns="1" />
+        <dataField fieldName="Descripcion" columns="50" />
+        <dataField fieldName="DescripcionBilingue" columns="50" />
+        <dataField fieldName="Numero" columns="15" />
+        <dataField fieldName="Texto" columns="50" />
+        <dataField fieldName="IDConcepto" aliasFieldName="IDConceptoalias" />
+        <dataField fieldName="IDConceptoidTipoconceptodescripcion" columns="50" />
+        <dataField fieldName="IDConcepto2" aliasFieldName="IDConcepto2alias" />
+        <dataField fieldName="IDConcepto2idTipoconceptodescripcion" columns="50" />
+        <dataField fieldName="SaldarFiniquito" columns="15" />
+        <dataField fieldName="AutoAlta" columns="15" />
+        <dataField fieldName="CreadoPor" columns="50" />
+        <dataField fieldName="ModificadoPor" columns="50" />
+        <dataField fieldName="CreadoEn" columns="10" />
+        <dataField fieldName="ModificadoEn" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Tipo Ahorro">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Tipo Ahorro" newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDTipoahorro" columns="1" />
+            <dataField fieldName="Descripcion" columns="50" />
+            <dataField fieldName="DescripcionBilingue" columns="50" />
+            <dataField fieldName="Numero" columns="15" />
+            <dataField fieldName="Texto" columns="50" />
+            <dataField fieldName="IDConcepto" aliasFieldName="IDConceptoalias" />
+            <dataField fieldName="IDConceptoidTipoconceptodescripcion" columns="50" />
+            <dataField fieldName="IDConcepto2" aliasFieldName="IDConcepto2alias" />
+            <dataField fieldName="IDConcepto2idTipoconceptodescripcion" columns="50" />
+            <dataField fieldName="SaldarFiniquito" columns="15" />
+            <dataField fieldName="AutoAlta" columns="15" />
+            <dataField fieldName="CreadoPor" columns="50" />
+            <dataField fieldName="ModificadoPor" columns="50" />
+            <dataField fieldName="CreadoEn" columns="10" />
+            <dataField fieldName="ModificadoEn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Tipo Ahorro">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Tipo Ahorro" newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDTipoahorro" columns="1" />
+            <dataField fieldName="Descripcion" columns="50" />
+            <dataField fieldName="DescripcionBilingue" columns="50" />
+            <dataField fieldName="Numero" columns="15" />
+            <dataField fieldName="Texto" columns="50" />
+            <dataField fieldName="IDConcepto" aliasFieldName="IDConceptoalias" />
+            <dataField fieldName="IDConcepto2" aliasFieldName="IDConcepto2alias" />
+            <dataField fieldName="SaldarFiniquito" columns="15" />
+            <dataField fieldName="AutoAlta" columns="15" />
+            <dataField fieldName="CreadoPor" columns="50" />
+            <dataField fieldName="ModificadoPor" columns="50" />
+            <dataField fieldName="CreadoEn" columns="10" />
+            <dataField fieldName="ModificadoEn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+  </actions>
+</dataController>

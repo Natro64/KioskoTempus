@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="TipoSolicitud" alias="TipoSolicitud" created="2016-05-17T07:08:12" modified="2016-05-26T16:24:06" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="NombreTabla" parentTableSchema="dbo" parentTableName="RB_Tabla" x="315" y="20">
+      <foreignKeyColumn columnName="NombreTabla" parentColumnName="TBL_Nombre" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column fieldName="IDTiposolicitud" name="ID_TipoSolicitud" label="ID Tipo Solicitud" />
+    <column fieldName="Descripcion" name="Descripcion" label="Descripcion" />
+    <column fieldName="NombreTabla" name="NombreTabla" label="Nombre Tabla" aliasColumnName="TBL_Alias" aliasForeignKey="NombreTabla" />
+    <column fieldName="NombretablatblAlias" name="TBL_Alias" label="Nombre Tabla TBL Alias" foreignKey="NombreTabla" />
+    <column fieldName="Observaciones" name="Observaciones" label="Observaciones" />
+  </columns>
+</dataModel>

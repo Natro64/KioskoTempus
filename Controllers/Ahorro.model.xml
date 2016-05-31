@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Ahorro" alias="Ahorro" created="2016-05-17T07:06:13" modified="2016-05-17T07:06:15" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="ID_TipoAhorro" parentTableSchema="dbo" parentTableName="TipoAhorro" x="344" y="20">
+      <foreignKeyColumn columnName="ID_TipoAhorro" parentColumnName="Id_TipoAhorro" />
+    </foreignKey>
+    <foreignKey id="TheID_Empleado" parentTableSchema="dbo" parentTableName="Empleado" x="344" y="227">
+      <foreignKeyColumn columnName="ID_Empleado" parentColumnName="ID_Empleado" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column fieldName="IDTipoahorro" name="ID_TipoAhorro" label="ID Tipo Ahorro" aliasColumnName="Descripcion" aliasForeignKey="ID_TipoAhorro" />
+    <column fieldName="IDTipoahorrodescripcion" name="Descripcion" label="ID Tipo Ahorro Descripcion" foreignKey="ID_TipoAhorro" />
+    <column fieldName="IDEmpleado" name="ID_Empleado" label="ID Empleado" aliasColumnName="NombreCompleto" aliasForeignKey="TheID_Empleado" />
+    <column fieldName="TheidEmpleadonombrecompleto" name="NombreCompleto" label="ID Empleado Nombre Completo" foreignKey="TheID_Empleado" />
+    <column fieldName="OtrosAbonos" name="OtrosAbonos" label="Otros Abonos" />
+    <column fieldName="OtrosCargos" name="OtrosCargos" label="Otros Cargos" />
+    <column fieldName="Fecha" name="Fecha" label="Fecha" format="g" />
+    <column fieldName="Formula" name="Formula" label="Formula" />
+    <column fieldName="Cantidad" name="Cantidad" label="Cantidad" />
+    <column fieldName="SaldoInicial" name="SaldoInicial" label="Saldo Inicial" />
+    <column fieldName="Status" name="Status" label="Status" />
+    <column fieldName="SaldoActual" name="SaldoActual" label="Saldo Actual" />
+    <column fieldName="Total" name="Total" label="Total" />
+    <column fieldName="CreadoPor" name="CreadoPor" label="Creado Por" />
+    <column fieldName="ModificadoPor" name="ModificadoPor" label="Modificado Por" />
+    <column fieldName="CreadoEn" name="CreadoEn" label="Creado En" format="g" />
+    <column fieldName="ModificadoEn" name="ModificadoEn" label="Modificado En" format="g" />
+    <column fieldName="IDAhorro" name="ID_Ahorro" label="ID Ahorro" />
+    <column fieldName="CuentaContable" name="CuentaContable" label="Cuenta Contable" />
+    <column fieldName="Observaciones" name="Observaciones" label="Observaciones" />
+    <column fieldName="FormulaSql" name="FormulaSQL" label="Formula SQL" />
+    <column fieldName="SaldarFiniquito" name="SaldarFiniquito" label="Saldar Finiquito" />
+  </columns>
+</dataModel>

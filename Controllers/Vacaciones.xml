@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Vacaciones" conflictDetection="overwriteChanges" label="Vacaciones" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Vacaciones"."Id_Vacaciones" "IDVacaciones"
+	,"Vacaciones"."Id_Empleado" "IDEmpleado"
+	,"Id_Empleado"."NombreCompleto" "IDEmpleadonombrecompleto"
+	,"Vacaciones"."Fecha" "Fecha"
+	,"Vacaciones"."TipoVacacion" "TipoVacacion"
+	,"Vacaciones"."Anio" "Anio"
+	,"Vacaciones"."FechaFin" "FechaFin"
+	,"Vacaciones"."Observaciones" "Observaciones"
+	,"Vacaciones"."DerechoPago" "DerechoPago"
+	,"Vacaciones"."DiasPago" "DiasPago"
+	,"Vacaciones"."SaldoPago" "SaldoPago"
+	,"Vacaciones"."DerechoGozo" "DerechoGozo"
+	,"Vacaciones"."DiasGoce" "DiasGoce"
+	,"Vacaciones"."SaldoGoce" "SaldoGoce"
+	,"Vacaciones"."SalDiario" "SalDiario"
+	,"Vacaciones"."DerechoPrima" "DerechoPrima"
+	,"Vacaciones"."DiasPrima" "DiasPrima"
+	,"Vacaciones"."SaldoPrima" "SaldoPrima"
+	,"Vacaciones"."Id_Prestaciones" "IDPrestaciones"
+	,"Vacaciones"."Id_Periodo" "IDPeriodo"
+	,"Vacaciones"."MovGlobal" "MovGlobal"
+	,"Vacaciones"."FechaCaptura" "FechaCaptura"
+	,"Vacaciones"."CreadoPor" "CreadoPor"
+	,"Vacaciones"."ModificadoPor" "ModificadoPor"
+	,"Vacaciones"."CreadoEn" "CreadoEn"
+	,"Vacaciones"."ModificadoEn" "ModificadoEn"
+from "dbo"."Vacaciones" "Vacaciones"
+	left join "dbo"."Empleado" "Id_Empleado" on "Vacaciones"."Id_Empleado" = "Id_Empleado"."ID_Empleado"
+]]></text>
+    </command>
+    <command id="Id_VacacionesIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Id_Vacaciones" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="IDVacaciones" type="Int32" allowNulls="false" isPrimaryKey="true" label="Id Vacaciones" readOnly="true" />
+    <field name="IDEmpleado" type="Int32" allowNulls="false" isPrimaryKey="true" label="Id Empleado" showInSummary="true">
+      <items style="Lookup" dataController="Empleado" newDataView="createForm1" dataValueField="IDEmpleado" dataView="LookUp" dataTextField="NombreCompleto" />
+    </field>
+    <field name="IDEmpleadonombrecompleto" type="String" label="Empleado" readOnly="true" length="92" />
+    <field name="Fecha" type="DateTime" allowNulls="false" dataFormatString="g" label="Fecha" showInSummary="true" />
+    <field name="TipoVacacion" type="Int16" allowNulls="false" label="Tipo Vacacion" showInSummary="true" />
+    <field name="Anio" type="Int16" allowNulls="false" label="Anio" showInSummary="true" />
+    <field name="FechaFin" type="DateTime" allowNulls="false" dataFormatString="g" label="Fecha Fin" showInSummary="true" />
+    <field name="Observaciones" type="String" default="create default [StrVacio] as ''" label="Observaciones" length="100" />
+    <field name="DerechoPago" type="Decimal" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Derecho Pago" />
+    <field name="DiasPago" type="Decimal" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Dias Pago" />
+    <field name="SaldoPago" type="Decimal" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Saldo Pago" />
+    <field name="DerechoGozo" type="Decimal" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Derecho Gozo" />
+    <field name="DiasGoce" type="Decimal" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Dias Goce" />
+    <field name="SaldoGoce" type="Decimal" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Saldo Goce" />
+    <field name="SalDiario" type="Decimal" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Sal Diario" />
+    <field name="DerechoPrima" type="Decimal" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Derecho Prima" />
+    <field name="DiasPrima" type="Decimal" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Dias Prima" />
+    <field name="SaldoPrima" type="Decimal" allowNulls="false" default="CREATE DEFAULT Cero AS 0" label="Saldo Prima" />
+    <field name="IDPrestaciones" type="String" allowNulls="false" default="create default [StrVacio] as ''" label="Id Prestaciones" length="1" />
+    <field name="IDPeriodo" type="String" default="create default [StrVacio] as ''" label="Id Periodo" length="8" />
+    <field name="MovGlobal" type="Boolean" allowNulls="false" default="((0))" label="Mov Global" />
+    <field name="FechaCaptura" type="DateTime" allowNulls="false" dataFormatString="g" label="Fecha Captura" computed="true">
+      <formula>select GETDATE()</formula>
+    </field>
+    <field name="CreadoPor" type="String" label="Creado Por" length="50" />
+    <field name="ModificadoPor" type="String" label="Modificado Por" length="50" />
+    <field name="CreadoEn" type="DateTime" dataFormatString="g" label="Creado En" />
+    <field name="ModificadoEn" type="DateTime" dataFormatString="g" label="Modificado En" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Vacaciones" filter="RFC = @BusinessRules_UserName" sortExpression="Fecha desc">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="IDEmpleado" aliasFieldName="IDEmpleadonombrecompleto" />
+        <dataField fieldName="Fecha" columns="10" />
+        <dataField fieldName="TipoVacacion" columns="15" />
+        <dataField fieldName="Anio" columns="15" />
+        <dataField fieldName="FechaFin" columns="10" />
+        <dataField fieldName="Observaciones" />
+        <dataField fieldName="DerechoPago" columns="15" />
+        <dataField fieldName="DiasPago" columns="15" />
+        <dataField fieldName="SaldoPago" columns="15" />
+        <dataField fieldName="DerechoGozo" columns="15" />
+        <dataField fieldName="DiasGoce" columns="15" />
+        <dataField fieldName="SaldoGoce" columns="15" />
+        <dataField fieldName="SalDiario" columns="15" />
+        <dataField fieldName="DerechoPrima" columns="15" />
+        <dataField fieldName="DiasPrima" columns="15" />
+        <dataField fieldName="SaldoPrima" columns="15" />
+        <dataField fieldName="IDPrestaciones" columns="1" />
+        <dataField fieldName="IDPeriodo" columns="8" />
+        <dataField fieldName="MovGlobal" />
+        <dataField fieldName="FechaCaptura" columns="10" />
+        <dataField fieldName="CreadoPor" columns="50" />
+        <dataField fieldName="ModificadoPor" columns="50" />
+        <dataField fieldName="CreadoEn" columns="10" />
+        <dataField fieldName="ModificadoEn" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Vacaciones">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Vacaciones" newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDEmpleado" aliasFieldName="IDEmpleadonombrecompleto" />
+            <dataField fieldName="Fecha" columns="10" />
+            <dataField fieldName="TipoVacacion" columns="15" />
+            <dataField fieldName="Anio" columns="15" />
+            <dataField fieldName="FechaFin" columns="10" />
+            <dataField fieldName="Observaciones" />
+            <dataField fieldName="DerechoPago" columns="15" />
+            <dataField fieldName="DiasPago" columns="15" />
+            <dataField fieldName="SaldoPago" columns="15" />
+            <dataField fieldName="DerechoGozo" columns="15" />
+            <dataField fieldName="DiasGoce" columns="15" />
+            <dataField fieldName="SaldoGoce" columns="15" />
+            <dataField fieldName="SalDiario" columns="15" />
+            <dataField fieldName="DerechoPrima" columns="15" />
+            <dataField fieldName="DiasPrima" columns="15" />
+            <dataField fieldName="SaldoPrima" columns="15" />
+            <dataField fieldName="IDPrestaciones" columns="1" />
+            <dataField fieldName="IDPeriodo" columns="8" />
+            <dataField fieldName="MovGlobal" />
+            <dataField fieldName="FechaCaptura" columns="10" />
+            <dataField fieldName="CreadoPor" columns="50" />
+            <dataField fieldName="ModificadoPor" columns="50" />
+            <dataField fieldName="CreadoEn" columns="10" />
+            <dataField fieldName="ModificadoEn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Vacaciones">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Vacaciones" newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDEmpleado" aliasFieldName="IDEmpleadonombrecompleto" />
+            <dataField fieldName="Fecha" columns="10" />
+            <dataField fieldName="TipoVacacion" columns="15" />
+            <dataField fieldName="Anio" columns="15" />
+            <dataField fieldName="FechaFin" columns="10" />
+            <dataField fieldName="Observaciones" />
+            <dataField fieldName="DerechoPago" columns="15" />
+            <dataField fieldName="DiasPago" columns="15" />
+            <dataField fieldName="SaldoPago" columns="15" />
+            <dataField fieldName="DerechoGozo" columns="15" />
+            <dataField fieldName="DiasGoce" columns="15" />
+            <dataField fieldName="SaldoGoce" columns="15" />
+            <dataField fieldName="SalDiario" columns="15" />
+            <dataField fieldName="DerechoPrima" columns="15" />
+            <dataField fieldName="DiasPrima" columns="15" />
+            <dataField fieldName="SaldoPrima" columns="15" />
+            <dataField fieldName="IDPrestaciones" columns="1" />
+            <dataField fieldName="IDPeriodo" columns="8" />
+            <dataField fieldName="MovGlobal" />
+            <dataField fieldName="FechaCaptura" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" roles="None" />
+      <action id="a3" commandName="Delete" roles="None" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" roles="None" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" roles="None" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" roles="None" />
+      <action id="a2" commandName="Delete" roles="None" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" roles="None" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" roles="None" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" roles="None" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="Update" type="Sql" phase="After" name="Vacaciones_Edit"><![CDATA[update Vacaciones
+set ModificadoPor = @BusinessRules_UserName,
+    ModificadoEn = GETDATE()
+where Id_Vacaciones = @Id_Vacaciones]]></rule>
+  </businessRules>
+</dataController>

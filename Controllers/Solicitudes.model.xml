@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Solicitudes" alias="Solicitudes" created="2016-05-17T07:08:07" modified="2016-05-26T16:24:00" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="TheID_Empleado" parentTableSchema="dbo" parentTableName="Empleado" x="324" y="20">
+      <foreignKeyColumn columnName="ID_Empleado" parentColumnName="ID_Empleado" />
+    </foreignKey>
+    <foreignKey id="TheID_TipoSolicitud" parentTableSchema="dbo" parentTableName="TipoSolicitud" x="324" y="779">
+      <foreignKeyColumn columnName="ID_TipoSolicitud" parentColumnName="ID_TipoSolicitud" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column fieldName="IDSolicitud" name="ID_Solicitud" label="ID Solicitud" />
+    <column fieldName="FechaSolicitud" name="FechaSolicitud" label="Fecha Solicitud" />
+    <column fieldName="IDEmpleado" name="ID_Empleado" label="ID Empleado" aliasColumnName="NombreCompleto" aliasForeignKey="TheID_Empleado" />
+    <column fieldName="TheidEmpleadonombrecompleto" name="NombreCompleto" label="ID Empleado Nombre Completo" foreignKey="TheID_Empleado" />
+    <column fieldName="IDTiposolicitud" name="ID_TipoSolicitud" label="ID Tipo Solicitud" aliasColumnName="Observaciones" aliasForeignKey="TheID_TipoSolicitud" />
+    <column fieldName="TheidTiposolicitudobservaciones" name="Observaciones" label="ID Tipo Solicitud Observaciones" foreignKey="TheID_TipoSolicitud" />
+    <column fieldName="FechaSolicitada" name="FechaSolicitada" label="Fecha Solicitada" />
+    <column fieldName="Cantidad" name="Cantidad" label="Cantidad" />
+    <column fieldName="Notas" name="Notas" label="Notas" />
+    <column fieldName="IDStatussolicitud" name="ID_StatusSolicitud" label="ID Status Solicitud" />
+    <column name="Motivo" fieldName="Motivo" label="Motivo" />
+    <column name="Observaciones" fieldName="Observaciones" label="Observaciones" />
+    <column name="ModificadoPor" fieldName="ModificadoPor" label="Modificado Por" />
+    <column name="FechaModificacion" fieldName="FechaModificacion" label="Fecha Modificacion" format="g" />
+    <column name="ID_Jefe" fieldName="IDJefe" label="ID Jefe" />
+    <column name="ID_Motivo" fieldName="IDMotivo" label="ID Motivo" />
+    <column name="ID_EstatusSolicitud" fieldName="IDEstatussolicitud" label="ID Estatussolicitud" />
+    <column name="NumSolicitud" fieldName="NumSolicitud" label="Num Solicitud" />
+  </columns>
+</dataModel>

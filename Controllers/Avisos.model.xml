@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Avisos" alias="Avisos" created="2016-05-17T07:05:53" modified="2016-05-23T14:06:19" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column fieldName="IDAvisos" name="ID_Avisos" label="ID Avisos" />
+    <column fieldName="TituloAvisos" name="TituloAvisos" label="Titulo Avisos" />
+    <column fieldName="Informacion" name="Informacion" label="Informacion" />
+    <column fieldName="FechaCreacion" name="FechaCreacion" label="Fecha Creacion" format="g" />
+    <column fieldName="CreadoPor" name="CreadoPor" label="Creado Por" />
+    <column name="IDAvisos" fieldName="Idavisos" label="Idavisos" />
+    <column name="Image" fieldName="Image" label="Image" />
+    <column name="ImageFileName" fieldName="ImageFileName" label="Image File Name" />
+    <column name="ImageContentType" fieldName="ImageContentType" label="Image Content Type" />
+    <column name="ImageLength" fieldName="ImageLength" label="Image Length" />
+    <column name="Duracion" fieldName="Duracion" label="Duracion" />
+  </columns>
+</dataModel>

@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Ahorro" conflictDetection="overwriteChanges" label="Ahorro" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Ahorro"."ID_TipoAhorro" "IDTipoahorro"
+	,"ID_TipoAhorro"."Descripcion" "IDTipoahorrodescripcion"
+	,"Ahorro"."ID_Empleado" "IDEmpleado"
+	,"TheID_Empleado"."NombreCompleto" "TheidEmpleadonombrecompleto"
+	,"Ahorro"."OtrosAbonos" "OtrosAbonos"
+	,"Ahorro"."OtrosCargos" "OtrosCargos"
+	,"Ahorro"."Fecha" "Fecha"
+	,"Ahorro"."Formula" "Formula"
+	,"Ahorro"."Cantidad" "Cantidad"
+	,"Ahorro"."SaldoInicial" "SaldoInicial"
+	,"Ahorro"."Status" "Status"
+	,"Ahorro"."SaldoActual" "SaldoActual"
+	,"Ahorro"."Total" "Total"
+	,"Ahorro"."CreadoPor" "CreadoPor"
+	,"Ahorro"."ModificadoPor" "ModificadoPor"
+	,"Ahorro"."CreadoEn" "CreadoEn"
+	,"Ahorro"."ModificadoEn" "ModificadoEn"
+	,"Ahorro"."ID_Ahorro" "IDAhorro"
+	,"Ahorro"."CuentaContable" "CuentaContable"
+	,"Ahorro"."Observaciones" "Observaciones"
+	,"Ahorro"."FormulaSQL" "FormulaSql"
+	,"Ahorro"."SaldarFiniquito" "SaldarFiniquito"
+from "dbo"."Ahorro" "Ahorro"
+	left join "dbo"."TipoAhorro" "ID_TipoAhorro" on "Ahorro"."ID_TipoAhorro" = "ID_TipoAhorro"."Id_TipoAhorro"
+	left join "dbo"."Empleado" "TheID_Empleado" on "Ahorro"."ID_Empleado" = "TheID_Empleado"."ID_Empleado"
+]]></text>
+    </command>
+    <command id="ID_AhorroIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ID_Ahorro" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="IDTipoahorro" type="String" allowNulls="false" label="ID Tipo Ahorro" length="1" showInSummary="true">
+      <items style="Lookup" dataController="TipoAhorro" newDataView="createForm1" dataValueField="IDTipoahorro" />
+    </field>
+    <field name="IDTipoahorrodescripcion" type="String" readOnly="true" label="Tipo de Ahorro" length="50" />
+    <field name="IDEmpleado" type="Int32" allowNulls="false" isPrimaryKey="true" label="ID Empleado" showInSummary="true">
+      <items style="Lookup" dataController="Empleado" newDataView="createForm1" dataValueField="IDEmpleado" dataView="LookUp" dataTextField="NombreCompleto" />
+    </field>
+    <field name="TheidEmpleadonombrecompleto" type="String" label="Empleado" readOnly="true" length="92" />
+    <field name="OtrosAbonos" type="Decimal" allowNulls="false" label="Otros Abonos" showInSummary="true" />
+    <field name="OtrosCargos" type="Decimal" allowNulls="false" label="Otros Cargos" showInSummary="true" />
+    <field name="Fecha" type="DateTime" allowNulls="false" dataFormatString="g" label="Fecha" showInSummary="true" />
+    <field name="Formula" type="String" allowQBE="false" allowSorting="false" label="Formula" length="8000" />
+    <field name="Cantidad" type="Int16" allowNulls="false" label="Cantidad" />
+    <field name="SaldoInicial" type="Decimal" allowNulls="false" label="Saldo Inicial" />
+    <field name="Status" type="Int16" allowNulls="false" label="Status" />
+    <field name="SaldoActual" type="Decimal" allowNulls="false" label="Saldo Actual" />
+    <field name="Total" type="Decimal" allowNulls="false" label="Total" />
+    <field name="CreadoPor" type="String" label="Creado Por" length="50" />
+    <field name="ModificadoPor" type="String" label="Modificado Por" length="50" />
+    <field name="CreadoEn" type="DateTime" dataFormatString="g" label="Creado En" />
+    <field name="ModificadoEn" type="DateTime" dataFormatString="g" label="Modificado En" />
+    <field name="IDAhorro" type="Int32" allowNulls="false" isPrimaryKey="true" label="ID Ahorro" readOnly="true" />
+    <field name="CuentaContable" type="String" label="Cuenta Contable" length="30" />
+    <field name="Observaciones" type="String" label="Observaciones" length="100" />
+    <field name="FormulaSql" type="String" allowQBE="false" allowSorting="false" label="Formula SQL" length="8000" />
+    <field name="SaldarFiniquito" type="String" label="Saldar Finiquito" length="1" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Ahorro" filter="RFC = @BusinessRules_UserName" sortExpression="Fecha desc">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="IDTipoahorro" aliasFieldName="IDTipoahorrodescripcion" />
+        <dataField fieldName="IDEmpleado" aliasFieldName="TheidEmpleadonombrecompleto" />
+        <dataField fieldName="OtrosAbonos" columns="15" />
+        <dataField fieldName="OtrosCargos" columns="15" />
+        <dataField fieldName="Fecha" columns="10" />
+        <dataField fieldName="Formula" rows="5" hidden="true" />
+        <dataField fieldName="Cantidad" columns="15" />
+        <dataField fieldName="SaldoInicial" columns="15" />
+        <dataField fieldName="Status" columns="15" />
+        <dataField fieldName="SaldoActual" columns="15" />
+        <dataField fieldName="Total" columns="15" />
+        <dataField fieldName="CuentaContable" columns="30" />
+        <dataField fieldName="Observaciones" />
+        <dataField fieldName="FormulaSql" rows="5" hidden="true" />
+        <dataField fieldName="SaldarFiniquito" columns="1" hidden="true" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Ahorro">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Ahorro" newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDTipoahorro" aliasFieldName="IDTipoahorrodescripcion" />
+            <dataField fieldName="IDEmpleado" aliasFieldName="TheidEmpleadonombrecompleto" />
+            <dataField fieldName="OtrosAbonos" columns="15" />
+            <dataField fieldName="OtrosCargos" columns="15" />
+            <dataField fieldName="Fecha" columns="10" />
+            <dataField fieldName="Formula" rows="5" />
+            <dataField fieldName="Cantidad" columns="15" />
+            <dataField fieldName="SaldoInicial" columns="15" />
+            <dataField fieldName="Status" columns="15" />
+            <dataField fieldName="SaldoActual" columns="15" />
+            <dataField fieldName="Total" columns="15" />
+            <dataField fieldName="CreadoPor" columns="50" readOnly="true" />
+            <dataField fieldName="ModificadoPor" columns="50" />
+            <dataField fieldName="CreadoEn" columns="10" readOnly="true" />
+            <dataField fieldName="ModificadoEn" columns="10" />
+            <dataField fieldName="CuentaContable" columns="30" />
+            <dataField fieldName="Observaciones" />
+            <dataField fieldName="FormulaSql" rows="5" />
+            <dataField fieldName="SaldarFiniquito" columns="1" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Ahorro">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Ahorro" newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDTipoahorro" aliasFieldName="IDTipoahorrodescripcion" />
+            <dataField fieldName="IDEmpleado" aliasFieldName="TheidEmpleadonombrecompleto" />
+            <dataField fieldName="OtrosAbonos" columns="15" />
+            <dataField fieldName="OtrosCargos" columns="15" />
+            <dataField fieldName="Fecha" columns="10" />
+            <dataField fieldName="Formula" rows="5" />
+            <dataField fieldName="Cantidad" columns="15" />
+            <dataField fieldName="SaldoInicial" columns="15" />
+            <dataField fieldName="Status" columns="15" />
+            <dataField fieldName="SaldoActual" columns="15" />
+            <dataField fieldName="Total" columns="15" />
+            <dataField fieldName="CuentaContable" columns="30" />
+            <dataField fieldName="Observaciones" />
+            <dataField fieldName="FormulaSql" rows="5" />
+            <dataField fieldName="SaldarFiniquito" columns="1" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" roles="None" />
+      <action id="a3" commandName="Delete" roles="None" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" roles="None" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" roles="None" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" roles="None" />
+      <action id="a2" commandName="Delete" roles="None" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" roles="None" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" roles="None" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" roles="None" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="Update" type="Sql" phase="After" name="Ahorro_Edit"><![CDATA[update Ahorro
+set ModificadoPor = @BusinessRules_UserName,
+    ModificadoEn = GETDATE()
+where ID_Ahorro = @ID_Ahorro]]></rule>
+  </businessRules>
+</dataController>

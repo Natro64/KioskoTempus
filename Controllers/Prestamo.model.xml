@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Prestamo" alias="Prestamo" created="2016-05-17T07:06:41" modified="2016-05-17T07:06:43" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="TheId_TipoPrestamo" parentTableSchema="dbo" parentTableName="TipoPrestamo" x="379" y="20">
+      <foreignKeyColumn columnName="Id_TipoPrestamo" parentColumnName="Id_TipoPrestamo" />
+    </foreignKey>
+    <foreignKey id="Id_Empleado" parentTableSchema="dbo" parentTableName="Empleado" x="379" y="227">
+      <foreignKeyColumn columnName="Id_Empleado" parentColumnName="ID_Empleado" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column fieldName="Referencia" name="Referencia" label="Referencia" />
+    <column fieldName="IDTipoprestamo" name="Id_TipoPrestamo" label="Id Tipo Prestamo" aliasColumnName="Descripcion" aliasForeignKey="TheId_TipoPrestamo" />
+    <column fieldName="TheidTipoprestamodescripcion" name="Descripcion" label="Id Tipo Prestamo Descripcion" foreignKey="TheId_TipoPrestamo" />
+    <column fieldName="IDEmpleado" name="Id_Empleado" label="Id Empleado" aliasColumnName="NombreCompleto" aliasForeignKey="Id_Empleado" />
+    <column fieldName="IDEmpleadonombrecompleto" name="NombreCompleto" label="Id Empleado Nombre Completo" foreignKey="Id_Empleado" />
+    <column fieldName="Abonos" name="Abonos" label="Abonos" format="c" />
+    <column fieldName="Cargos" name="Cargos" label="Cargos" format="c" />
+    <column fieldName="FechaInicio" name="FechaInicio" label="Fecha Inicio" />
+    <column fieldName="FormulaDescuento" name="FormulaDescuento" label="Formula Descuento" />
+    <column fieldName="Importe" name="Importe" label="Importe" format="c" />
+    <column fieldName="NoAbonos" name="NoAbonos" label="No Abonos" />
+    <column fieldName="SaldoInicial" name="SaldoInicial" label="Saldo Inicial" format="c" />
+    <column fieldName="Estatus" name="Estatus" label="Estatus" />
+    <column fieldName="Total" name="Total" label="Total" format="c" />
+    <column fieldName="Saldo" name="Saldo" label="Saldo" format="c" />
+    <column fieldName="CreadoPor" name="CreadoPor" label="Creado Por" />
+    <column fieldName="ModificadoPor" name="ModificadoPor" label="Modificado Por" />
+    <column fieldName="CreadoEn" name="CreadoEn" label="Creado En" format="g" />
+    <column fieldName="ModificadoEn" name="ModificadoEn" label="Modificado En" format="g" />
+    <column fieldName="IDPrestamo" name="id_Prestamo" label="id Prestamo" />
+    <column fieldName="CuentaContable" name="CuentaContable" label="Cuenta Contable" />
+    <column fieldName="Observaciones" name="Observaciones" label="Observaciones" />
+    <column fieldName="FormulaDescuentoSql" name="FormulaDescuentoSQL" label="Formula Descuento SQL" />
+    <column fieldName="SaldarFiniquito" name="SaldarFiniquito" label="Saldar Finiquito" />
+  </columns>
+</dataModel>

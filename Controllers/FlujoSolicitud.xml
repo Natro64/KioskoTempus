@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="FlujoSolicitud" conflictDetection="overwriteChanges" label="Flujo Solicitud" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"FlujoSolicitud"."ID_FlujoSolicitud" "IDFlujosolicitud"
+	,"ID_FlujoSolicitud"."Notas" "IDFlujosolicitudnotas"
+	,"ID_FlujoSolicitudID_Empleado"."NombreCompleto" "IDFlujosolicitudidEmpleadonombrecompleto"
+	,"FlujoSolicitud"."Fecha" "Fecha"
+	,"FlujoSolicitud"."Id_Estatus" "IDEstatus"
+	,"FlujoSolicitud"."Observaciones" "Observaciones"
+	,"FlujoSolicitud"."CreadoPor" "CreadoPor"
+from "dbo"."FlujoSolicitud" "FlujoSolicitud"
+	left join "dbo"."Solicitudes" "ID_FlujoSolicitud" on "FlujoSolicitud"."ID_FlujoSolicitud" = "ID_FlujoSolicitud"."ID_Solicitud"
+	left join "dbo"."Empleado" "ID_FlujoSolicitudID_Empleado" on "ID_FlujoSolicitud"."ID_Empleado" = "ID_FlujoSolicitudID_Empleado"."ID_Empleado"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="IDFlujosolicitud" type="Int32" allowNulls="false" isPrimaryKey="true" label="ID Flujo Solicitud" showInSummary="true">
+      <items style="Lookup" dataController="Solicitudes" newDataView="createForm1" dataValueField="IDSolicitud" />
+    </field>
+    <field name="IDFlujosolicitudnotas" type="String" readOnly="true" label="ID Flujo Solicitud Notas" length="80" />
+    <field name="IDFlujosolicitudidEmpleadonombrecompleto" type="String" label="ID Flujo Solicitud ID Empleado Nombre Completo" readOnly="true" length="92" />
+    <field name="Fecha" type="DateTime" allowNulls="false" label="Fecha" showInSummary="true" />
+    <field name="IDEstatus" type="Int32" allowNulls="false" label="Id Estatus" showInSummary="true" />
+    <field name="Observaciones" type="String" label="Observaciones" length="50" showInSummary="true" />
+    <field name="CreadoPor" type="String" allowNulls="false" label="Creado Por" length="80" showInSummary="true" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Flujo Solicitud">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="IDFlujosolicitud" aliasFieldName="IDFlujosolicitudnotas" />
+        <dataField fieldName="IDFlujosolicitudidEmpleadonombrecompleto" />
+        <dataField fieldName="Fecha" columns="10" />
+        <dataField fieldName="IDEstatus" columns="15" />
+        <dataField fieldName="Observaciones" columns="50" />
+        <dataField fieldName="CreadoPor" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Flujo Solicitud">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Flujo Solicitud" newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDFlujosolicitud" aliasFieldName="IDFlujosolicitudnotas" />
+            <dataField fieldName="IDFlujosolicitudidEmpleadonombrecompleto" />
+            <dataField fieldName="Fecha" columns="10" />
+            <dataField fieldName="IDEstatus" columns="15" />
+            <dataField fieldName="Observaciones" columns="50" />
+            <dataField fieldName="CreadoPor" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Flujo Solicitud">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Flujo Solicitud" newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDFlujosolicitud" aliasFieldName="IDFlujosolicitudnotas" />
+            <dataField fieldName="Fecha" columns="10" />
+            <dataField fieldName="IDEstatus" columns="15" />
+            <dataField fieldName="Observaciones" columns="50" />
+            <dataField fieldName="CreadoPor" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+  </actions>
+</dataController>

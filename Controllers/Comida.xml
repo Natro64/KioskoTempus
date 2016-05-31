@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Comida" conflictDetection="overwriteChanges" label="Comida" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[select
+	,"Comida"."Platillo" "Platillo"
+	,"Comida"."Descripcion" "Descripcion"
+	,"Comida"."Tipo" "Tipo"
+	,"Comida"."Image" "Image"
+	,"Comida"."ImageFileName" "ImageFileName"
+	,"Comida"."ImageContentType" "ImageContentType"
+	,"Comida"."ImageLength" "ImageLength"
+	,"Comida"."IDComida" "Idcomida"
+from "dbo"."Comida" "Comida"
+	left join "dbo"."PrecioComida" "Tipo" on "Comida"."Tipo" = "Tipo"."ID_PrecioComida"
+]]></text>
+    </command>
+    <command id="IDComidaIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="IDComida" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Platillo" type="String" allowNulls="false" label="Platillo" length="40" showInSummary="true" />
+    <field name="Descripcion" type="String" allowQBE="false" allowSorting="false" label="Descripcion" showInSummary="true" />
+    <field name="Tipo" type="Byte" allowNulls="false" label="Tipo" showInSummary="true">
+      <items style="DropDownList" dataController="PrecioComida" newDataView="createForm1" dataValueField="IDPreciocomida" dataTextField="Tipo" />
+    </field>
+    <field name="Image" type="Byte[]" onDemand="true" sourceFields="IDComida" onDemandHandler="ComidaImage" onDemandStyle="Thumbnail" allowQBE="false" allowSorting="false" label="Image" showInSummary="true" />
+    <field name="ImageFileName" type="String" label="Image File Name" length="100" showInSummary="true" />
+    <field name="ImageContentType" type="String" label="Image Content Type" length="100" />
+    <field name="ImageLength" type="Int32" label="Image Length" />
+    <field name="Idcomida" type="Int32" allowNulls="false" isPrimaryKey="true" label="Idcomida" readOnly="true" />
+    <field name="Tipo1" type="String" readOnly="true" label="Tipo" length="30" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Comida">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Platillo" columns="40" />
+        <dataField fieldName="Tipo" />
+        <dataField fieldName="Descripcion" rows="5" />
+        <dataField fieldName="Image" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Comida">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Comida" newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Platillo" columns="40" />
+            <dataField fieldName="Descripcion" rows="5" />
+            <dataField fieldName="Tipo" />
+            <dataField fieldName="Image" columns="15" textMode="Text" />
+            <dataField fieldName="ImageFileName" textMode="Static" />
+            <dataField fieldName="ImageContentType" textMode="Static" />
+            <dataField fieldName="ImageLength" columns="15" textMode="Static" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Comida">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Comida" newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Platillo" columns="40" />
+            <dataField fieldName="Descripcion" rows="5" />
+            <dataField fieldName="Tipo" />
+            <dataField fieldName="Image" columns="15" textMode="Text" />
+            <dataField fieldName="ImageFileName" textMode="Static" />
+            <dataField fieldName="ImageContentType" textMode="Static" />
+            <dataField fieldName="ImageLength" columns="15" textMode="Static" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" roles="Administrators, RecursosHumanos" />
+      <action id="a3" commandName="Delete" roles="Administrators, RecursosHumanos" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" roles="Administrators, RecursosHumanos" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" roles="None" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" roles="Administrators, RecursosHumanos" />
+      <action id="a2" commandName="Delete" roles="Administrators, RecursosHumanos" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" roles="Administrators, RecursosHumanos" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" roles="Administrators, RecursosHumanos" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" roles="Administrators, RecursosHumanos" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+  </actions>
+</dataController>
