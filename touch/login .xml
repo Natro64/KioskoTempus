@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<%@ Page="" Language="VB" Debug="true" %>
+ <%@ Import="" Namespace="System.Data" %>
+    <%@ Import="" Namespace="System.Data.SqlClient" %>
+      <!-- The Nivo files can be downloaded from the link I provided above. -->
+      <link rel="stylesheet" href="nivo-slider.css" type="text/css" />
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
+      <script src="jquery.nivo.slider.pack.js" type="text/javascript"></script>
+      <script type="text/javascript">
+        $(window).load(function() {
+        $('#slider').nivoSlider();
+        });
+      </script>
+      <div id="slider" class="nivoSlider">
+        <!-- To connect to a MSSQL db comes from http://www.go4expert.com/articles/connecting-mssql-server-aspnet-t2559/ since I do not have prior knowledge on how to do this with ASP.NET -->
+        <%   Dim myDataReader as SqlDataReader
+        Dim mySqlConnection as SqlConnection
+        Dim mySqlCommand as SqlCommand
+
+        mySqlConnection = new SqlConnection("server=mssql.win-servers.com;user=dbuser;password=dbpwd;database=db")
+        mySqlCommand = new SqlCommand("SELECT * FROM Avisos ORDER BY IDAvisos  DESC LIMIT 3", mySqlConnection)
+        mySqlConnection.Open()
+        myDataReader = mySqlCommand.ExecuteReader(CommandBehavior.CloseConnection)
+
+
+        Do While (myDataReader.Read())
+        Response.Write('<img src="' & myDataReader.getString(1) & '" alt="" />')
+        Loop
+
+        myDataReader.Close()
+        mySqlConnection.Close()
+        %>
+      </div>
+      
+      
